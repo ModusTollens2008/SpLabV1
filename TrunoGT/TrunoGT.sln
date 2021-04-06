@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrunoGT", "TrunoGT\TrunoGT.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LowFunctions", "LowFunctions\LowFunctions.csproj", "{5D8454E4-97CB-4DE6-A1FF-EB036DFBEEE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLogic\BusinessLogic.csproj", "{1BEDA57A-9F08-44D8-BBB5-7B6A6DE5EA2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5D8454E4-97CB-4DE6-A1FF-EB036DFBEEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D8454E4-97CB-4DE6-A1FF-EB036DFBEEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D8454E4-97CB-4DE6-A1FF-EB036DFBEEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BEDA57A-9F08-44D8-BBB5-7B6A6DE5EA2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BEDA57A-9F08-44D8-BBB5-7B6A6DE5EA2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BEDA57A-9F08-44D8-BBB5-7B6A6DE5EA2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BEDA57A-9F08-44D8-BBB5-7B6A6DE5EA2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
