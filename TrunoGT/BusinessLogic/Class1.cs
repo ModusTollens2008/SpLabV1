@@ -10,7 +10,8 @@ namespace BusinessLogic
     public class WorkWithFiles
     {
         private List<DllNode> Antonya = new List<DllNode>();
-        public getFromFile(string filename)
+		private List<BinaryNode> Antonya2 = new List<BinaryNode>();
+		public getFromFile(string filename)
         {
            
         }
