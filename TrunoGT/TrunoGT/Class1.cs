@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace TrunoGT
 {
     class Class1
-    {
+    { private string hui="huiname";
     }
 }
