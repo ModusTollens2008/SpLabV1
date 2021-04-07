@@ -4,7 +4,7 @@ namespace BusinessLogic
 {
     public class WorkWithXML
     {
-       
+
         public static IEnumerable<DllNode> readFile(string fileName)
         {
             List<DllNode> dllList = new List<DllNode>();
@@ -47,7 +47,7 @@ namespace BusinessLogic
 
 
 
-        public static void writeNodeFile(string fileName,DllNode dllNode)
+        public static void writeNodeFile(string fileName, DllNode dllNode)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(fileName);
@@ -60,9 +60,9 @@ namespace BusinessLogic
             XmlElement xversion = xDoc.CreateElement("version");
             XmlElement xchangedate = xDoc.CreateElement("changedate");
 
-            XmlText xTextName=xDoc.CreateTextNode(dllNode.Name);
-            XmlText xTextVersion= xDoc.CreateTextNode(dllNode.Vers);
-            XmlText xTextChangeDate= xDoc.CreateTextNode(dllNode.Lastchange);
+            XmlText xTextName = xDoc.CreateTextNode(dllNode.Name);
+            XmlText xTextVersion = xDoc.CreateTextNode(dllNode.Vers);
+            XmlText xTextChangeDate = xDoc.CreateTextNode(dllNode.Lastchange);
 
             xname.AppendChild(xTextName);
 
@@ -82,7 +82,14 @@ namespace BusinessLogic
                 writeNodeFile(fileName, dllNode);
             }
         }
+        public static void deleteXML(string fileName)
+        {
+            XmlDocument xDoc = new XmlDocument();
+            xDoc.Load(fileName);
+            XmlElement xRoot = xDoc.DocumentElement;
+            xRoot.RemoveAll();
+            xDoc.Save(fileName);
 
-
+        }      
     }
 }

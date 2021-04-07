@@ -25,6 +25,7 @@ namespace TrunoGT
             list.Add(new DllNode("chlenodevka2", "chlenodevka4", "chlenodevka14"));
             WorkWithXML.writeNodeFile("Z:/универ/3 курс 2 семак/СИС/ЛР/call/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", typoi);
             WorkWithXML.writeList("Z:/универ/3 курс 2 семак/СИС/ЛР/call/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", list);
+            WorkWithXML.deleteXML("Z:/универ/3 курс 2 семак/СИС/ЛР/call/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml");
 
 
 
