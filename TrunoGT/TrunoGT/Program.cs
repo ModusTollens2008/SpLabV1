@@ -29,8 +29,6 @@ namespace TrunoGT
             listOp.setList(WorkWithXML.readFile("Z:/универ/3 курс 2 семак/СИС/ЛР/call/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList());
             listOp.printall();
 
-
-
         }
 	}
 }
