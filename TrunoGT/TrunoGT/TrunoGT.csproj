@@ -76,5 +76,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
+      <Project>{1beda57a-9f08-44d8-bbb5-7b6a6de5ea2d}</Project>
+      <Name>BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LowFunctions\LowFunctions.csproj">
+      <Project>{5d8454e4-97cb-4de6-a1ff-eb036dfbeee7}</Project>
+      <Name>LowFunctions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TRUNOGTFILES\TRUNOGTFILExml.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

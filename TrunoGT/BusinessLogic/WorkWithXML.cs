@@ -2,10 +2,10 @@
 using System.Xml;
 namespace BusinessLogic
 {
-    class WorkWithXML
+    public class WorkWithXML
     {
        
-        public IEnumerable<DllNode> readFile(string fileName)
+        public static IEnumerable<DllNode> readFile(string fileName)
         {
             List<DllNode> dllList = new List<DllNode>();
             XmlDocument xDoc = new XmlDocument();
@@ -47,13 +47,13 @@ namespace BusinessLogic
 
 
 
-        public void writeNodeFile(string fileName,DllNode dllNode)
+        public static void writeNodeFile(string fileName,DllNode dllNode)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(fileName);
             XmlElement xRoot = xDoc.DocumentElement;
 
-            XmlElement xdll = xDoc.CreateElement(".dll");
+            XmlElement xdll = xDoc.CreateElement("dll");
 
             XmlAttribute xname = xDoc.CreateAttribute("name");
 
@@ -73,7 +73,14 @@ namespace BusinessLogic
             xdll.AppendChild(xversion);
             xdll.AppendChild(xchangedate);
             xRoot.AppendChild(xdll);
-
+            xDoc.Save(fileName);
+        }
+        public static void writeList(string fileName, List<DllNode> dllList)
+        {
+            foreach (DllNode dllNode in dllList)
+            {
+                writeNodeFile(fileName, dllNode);
+            }
         }
 
 
