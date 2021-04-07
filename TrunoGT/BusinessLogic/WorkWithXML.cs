@@ -46,16 +46,36 @@ namespace BusinessLogic
         }
 
 
-        public void writeFile(string fileName,List<DllNode> dllNodes)
+
+        public void writeNodeFile(string fileName,DllNode dllNode)
         {
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(fileName);
             XmlElement xRoot = xDoc.DocumentElement;
-            XmlElement xname = xDoc.CreateElement("name");
+
+            XmlElement xdll = xDoc.CreateElement(".dll");
+
+            XmlAttribute xname = xDoc.CreateAttribute("name");
+
             XmlElement xversion = xDoc.CreateElement("version");
             XmlElement xchangedate = xDoc.CreateElement("changedate");
 
-            
+            XmlText xTextName=xDoc.CreateTextNode(dllNode.Name);
+            XmlText xTextVersion= xDoc.CreateTextNode(dllNode.Vers);
+            XmlText xTextChangeDate= xDoc.CreateTextNode(dllNode.Lastchange);
+
+            xname.AppendChild(xTextName);
+
+            xversion.AppendChild(xTextVersion);
+            xchangedate.AppendChild(xTextChangeDate);
+
+            xdll.Attributes.Append(xname);
+            xdll.AppendChild(xversion);
+            xdll.AppendChild(xchangedate);
+            xRoot.AppendChild(xdll);
+
         }
+
+
     }
 }
