@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
 namespace BusinessLogic
 {
-    class ListOperations
+    public class ListOperations
     {
         private List<DllNode> mainList = new List<DllNode>();       
         public List<DllNode> MainList
@@ -38,6 +39,15 @@ namespace BusinessLogic
         public void setList(List<DllNode> dllNodes) 
         {
             mainList = dllNodes;
+        }
+        public void printall()
+        {
+            foreach (DllNode d in mainList)
+            {
+                Console.WriteLine(d.Lastchange);
+                Console.WriteLine(d.Name);
+                Console.WriteLine(d.Vers);
+            }
         }
 
     }

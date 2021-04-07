@@ -29,11 +29,11 @@ namespace BusinessLogic
                 {
                     if (childNode.Name == "version")
                     {
-                        version = childNode.Value;
+                        version = childNode.InnerText;
                     }
                     else if (childNode.Name == "changedate")
                     {
-                        changedate = childNode.Value;
+                        changedate = childNode.InnerText;
                     }
                 }
 
