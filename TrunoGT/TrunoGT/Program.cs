@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using BusinessLogic;
 namespace TrunoGT
 {
 	static class Program
@@ -17,6 +17,10 @@ namespace TrunoGT
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
+			List<BinaryNode> bn = new List<BinaryNode>();
+			bn.Add(new BinaryNode("dfs","fsd","sdf"));
+			WorkWithFiles.WriteBinFile("sdg",bn);
+	
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace BusinessLogic
 
 		private List<BinaryNode> BinFiles = new List<BinaryNode>();
 
-		public IEnumerable<BinaryNode> ReadFromBin(string filepath)
+		public static IEnumerable<BinaryNode> ReadFromBin(string filepath)
 		{
 			List<BinaryNode> p = new List<BinaryNode>();
 			try
@@ -34,7 +34,7 @@ namespace BusinessLogic
 			}
 			return p;
 		}
-		public void WriteBinFile(string filename)
+		public static void WriteBinFile(string filename,List<BinaryNode> binlist)
 		{
 			try
 			{
@@ -42,7 +42,7 @@ namespace BusinessLogic
 				using (BinaryWriter writer = new BinaryWriter(File.Open(filename, FileMode.OpenOrCreate)))
 				{
 					// записываем в файл значение каждого поля структуры
-					foreach (BinaryNode s in BinFiles)
+					foreach (BinaryNode s in binlist)
 					{
 						writer.Write(s.Filepath);
 						writer.Write(s.Size);
