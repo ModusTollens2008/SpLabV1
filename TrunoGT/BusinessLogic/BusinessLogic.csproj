@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BinaryNode.cs" />
     <Compile Include="ListOperations.cs" />
+    <Compile Include="StructureAnalyse.cs" />
     <Compile Include="WorkWithBin.cs" />
     <Compile Include="WorkWithFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
