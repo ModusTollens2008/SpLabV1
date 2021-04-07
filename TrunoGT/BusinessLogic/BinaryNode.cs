@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-	class BinaryNode
+	public class BinaryNode
 	{
 		private string filepath;
 		private string size;
