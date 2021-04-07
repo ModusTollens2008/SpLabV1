@@ -7,8 +7,6 @@ namespace BusinessLogic
     public class WorkWithFiles
     {
 
-		private List<BinaryNode> BinFiles = new List<BinaryNode>();
-
 		public static IEnumerable<BinaryNode> ReadFromBin(string filepath)
 		{
 			List<BinaryNode> p = new List<BinaryNode>();
@@ -57,32 +55,7 @@ namespace BusinessLogic
 			}
 ;
 		}
-		public void AddFileWrite(string filepath)
-		{
-			FileInfo fileInf = new FileInfo(filepath);
-			if (fileInf.Exists)
-			{
-				BinFiles.Add(new BinaryNode(fileInf.FullName,fileInf.Length.ToString(),fileInf.CreationTime.ToString()));
-			}
-		}
-		public void DeleteFileWrite(int index)
-		{
-			if (index>0 && BinFiles!=null)
-			{
-				BinFiles.RemoveAt(index);
-			}
-
-		}
-		public void EditFileWrite(int index,string newPath,string newSize,string newDate)
-		{
-			if (index > 0 && BinFiles != null)
-			{
-				BinFiles[index].Filepath=newPath;
-				BinFiles[index].Size = newSize;
-				BinFiles[index].Createdate = newDate;
-			}
-
-		}
+		
 	}
 
 }
