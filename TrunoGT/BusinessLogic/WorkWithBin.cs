@@ -7,9 +7,17 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-	class WorkWithBin
+	public class WorkWithBin
 	{
-		private List<BinaryNode> BinFiles = new List<BinaryNode>();
+
+		private List<BinaryNode> binFiles = new List<BinaryNode>();
+
+		public List<BinaryNode> BinFiles
+		{
+			get { return binFiles; }
+			set { binFiles = value; }
+		} 
+
 		public void AddFileWrite(string filepath)
 		{
 			FileInfo fileInf = new FileInfo(filepath);
@@ -26,13 +34,13 @@ namespace BusinessLogic
 			}
 
 		}
-		public static void EditFileWrite(BinaryNode binnode, string newPath, string newSize, string newDate)
+		public  void EditFileWrite(int index, string newPath, string newSize, string newDate)
 		{
-			if (binnode != null)
+			if (BinFiles != null)
 			{
-				binnode.Filepath = newPath;
-				binnode.Size = newSize;
-				binnode.Createdate = newDate;
+				BinFiles[index].Filepath = newPath;
+				BinFiles[index].Size = newSize;
+				BinFiles[index].Createdate = newDate;
 			}
 
 		}
