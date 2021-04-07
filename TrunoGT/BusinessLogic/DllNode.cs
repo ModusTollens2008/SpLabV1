@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class DllNode
+    public class DllNode
     {
         private string name;
         private string version;
