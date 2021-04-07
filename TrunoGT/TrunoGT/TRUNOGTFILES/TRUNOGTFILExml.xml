@@ -1,21 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <dlls>
-  <dll name="chlen">
-    <version>hui</version>
-    <changedate>nihui</changedate>
-  </dll>
-  <dll name="chlen">
-    <version>hui</version>
-    <changedate>nihui</changedate>
-  </dll>
-  <dll name="chlen">
-    <version>hui</version>
-    <changedate>nihui</changedate>
-  </dll>
-  <dll name="chlen">
-    <version>hui</version>
-    <changedate>nihui</changedate>
-  </dll>
   <dll name="chlenodevka">
     <version>chlenodevka2</version>
     <changedate>chlenodevka3</changedate>
