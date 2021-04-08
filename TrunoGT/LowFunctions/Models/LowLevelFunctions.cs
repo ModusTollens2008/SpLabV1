@@ -1,13 +1,14 @@
-﻿using System;
+﻿using LowFunctions.IModels;
+using System;
 using System.Reflection.Emit;
 
 namespace LowFunctions
 {
-    public class LowLevelFunctions
+    public class LowLevelFunctions : ILowLevelFunctions
     {
         private delegate int Operation(int a, int b);
         private delegate int OperationGT(int a);
-        public static int LowLelelMultiple(int a, int b)
+        public int LowLevelMultiple(int a, int b)
         {
             Type[] OperationArgs = { typeof(int), typeof(int) };
             DynamicMethod mul = new DynamicMethod("Mul", typeof(int), OperationArgs);
@@ -21,7 +22,7 @@ namespace LowFunctions
             return mul_op(a, b);
         }
 
-        public static int LowLelelNot(int a)
+        public int LowLevelNot(int a)
         {
             Type[] OperationArgs = { typeof(int)};
             DynamicMethod not = new DynamicMethod("Not", typeof(int), OperationArgs);

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using BusinessLogic.IModels;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
 namespace BusinessLogic
 {
-    public class ListOperations
+    public class ListOperations: IListOperations
     {
         private List<DllNode> mainList = new List<DllNode>();       
         public List<DllNode> MainList

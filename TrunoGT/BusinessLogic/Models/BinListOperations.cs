@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLogic.IModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-	public class WorkWithBin
+	public class BinListOperaions:IListOperations
 	{
 
 		private List<BinaryNode> binFiles = new List<BinaryNode>();
@@ -16,9 +17,13 @@ namespace BusinessLogic
 		{
 			get { return binFiles; }
 			set { binFiles = value; }
-		} 
+		}
+		public List<BinaryNode> GetList()
+		{
+			return BinFiles;
+		}
 
-		public void AddFileWrite(string filepath)
+		public void addNewElement(string filepath)
 		{
 			FileInfo fileInf = new FileInfo(filepath);
 			if (fileInf.Exists)
@@ -26,7 +31,7 @@ namespace BusinessLogic
 				BinFiles.Add(new BinaryNode(fileInf.FullName, fileInf.Length.ToString(), fileInf.CreationTime.ToString()));
 			}
 		}
-		public void DeleteFileWrite(int index)
+		public void deleteElement(int index)
 		{
 			if (index > 0 && BinFiles != null)
 			{
@@ -34,7 +39,7 @@ namespace BusinessLogic
 			}
 
 		}
-		public  void EditFileWrite(int index, string newPath, string newSize, string newDate)
+		public  void editElement(int index, string newPath, string newSize, string newDate)
 		{
 			if (BinFiles != null)
 			{

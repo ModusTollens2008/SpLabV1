@@ -21,7 +21,7 @@ namespace TrunoGT
 			
 			List<BinaryNode> nd = new List<BinaryNode>();
 			//WorkWithFiles.ReadFromBin("D:/ SPLabV1 / SpLabV1 / TrunoGT / TrunoGT / TRUNOGTFILES / binfile.bin");
-			WorkWithBin wd = new WorkWithBin();
+			BinListOperaions wd = new BinListOperaions();
 			wd.BinFiles = WorkWithFiles.ReadFromBin("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
 			nd = wd.BinFiles;
 			nd.Add(new BinaryNode("Directory2", "114", "11.03.2020"));
@@ -46,6 +46,11 @@ namespace TrunoGT
 		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
 			
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			Console.WriteLine("sdfsdfdsfdsfsd");
 		}
 	}
 }
