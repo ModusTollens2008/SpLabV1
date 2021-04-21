@@ -10,16 +10,21 @@ namespace TrunoGT.IViews
 	interface IForm
 	{
 		string FilePath
-		{
-			 get; set;
-		}
+		{get; set;}
 		int BinIndex
-		{
-			get; set;
-		}
-		void OutTable(List<BinaryNode> binlist);
-		event EventHandler Save;
-		event EventHandler Delete;
+		{get; set;}
+		string newFilePath
+		{get; set;}
+		string newCreateDate
+		{get; set;}
+		string newSize
+		{get; set;}
 
+		void OutTable(List<BinaryNode> binlist);
+		event EventHandler Add;
+		event EventHandler Delete;
+		event EventHandler Save;
+		event EventHandler ReadFromFile;
+		event EventHandler Edit;
 	}
 }

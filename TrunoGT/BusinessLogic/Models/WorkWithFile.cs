@@ -7,7 +7,7 @@ namespace BusinessLogic
     public class WorkWithFiles
     {
 
-		public static IEnumerable<BinaryNode> ReadFromBin(string filepath)
+		public  IEnumerable<BinaryNode> ReadFromBin(string filepath)
 		{
 			List<BinaryNode> p = new List<BinaryNode>();
 			try
@@ -32,7 +32,7 @@ namespace BusinessLogic
 			}
 			return p;
 		}
-		public static void WriteBinFile(string filename,List<BinaryNode> binlist)
+		public  void WriteBinFile(string filename,List<BinaryNode> binlist)
 		{
 			try
 			{

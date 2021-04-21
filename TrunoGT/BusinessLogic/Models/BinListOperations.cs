@@ -17,9 +17,10 @@ namespace BusinessLogic
 			get { return binFiles; }
 			set { binFiles = value; }
 		}
-		public List<BinaryNode> GetList()
+		public List<BinaryNode>GetList
 		{
-			return BinFiles;
+			get{ return BinFiles; }
+			set{ BinFiles=value; }
 		}
 
 		public void addNewElement(string filepath)
