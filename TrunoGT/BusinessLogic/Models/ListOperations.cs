@@ -6,7 +6,7 @@ using System.IO;
 
 namespace BusinessLogic
 {
-    public class ListOperations: IListOperations
+    public class ListOperations
     {
         private List<DllNode> mainList = new List<DllNode>();       
         public List<DllNode> MainList
@@ -18,8 +18,7 @@ namespace BusinessLogic
         {
             FileInfo fileInf = new FileInfo(filepath);
             if (fileInf.Exists)
-            {
-                
+            {          
                 mainList.Add(new DllNode(fileInf.Name, FileVersionInfo.GetVersionInfo(filepath).FileVersion, fileInf.LastWriteTime.ToString()));
             }
         }

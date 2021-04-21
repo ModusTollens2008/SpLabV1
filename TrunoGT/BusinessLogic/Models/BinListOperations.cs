@@ -8,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-	public class BinListOperaions:IListOperations
+	public class BinListOperations:IListOperations
 	{
 
 		private List<BinaryNode> binFiles = new List<BinaryNode>();
-
 		public List<BinaryNode> BinFiles
 		{
 			get { return binFiles; }
@@ -33,7 +32,7 @@ namespace BusinessLogic
 		}
 		public void deleteElement(int index)
 		{
-			if (index > 0 && BinFiles != null)
+			if (index >= 0 &&index<=BinFiles.Count&& BinFiles != null&&BinFiles.Count!=0)
 			{
 				BinFiles.RemoveAt(index);
 			}

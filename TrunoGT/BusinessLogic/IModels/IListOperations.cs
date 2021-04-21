@@ -8,7 +8,7 @@ namespace BusinessLogic.IModels
 {
 	interface IListOperations
 	{
-
+		List<BinaryNode> GetList();
 		void addNewElement(string filepath);
 		void deleteElement(int index);
 		void editElement(int index, string name, string version, string lastchange);
