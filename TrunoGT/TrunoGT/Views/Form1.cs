@@ -21,6 +21,13 @@ namespace TrunoGT
 		private string newcreatedate;
 		private string newsize;
 		private int binindex;
+		private int dllindex;
+		private string filepathdll;
+		private string newnamedll;
+		private string newversiondll;
+		private string newlastchangedll;
+
+
 		private OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
 		public Form1()
@@ -34,16 +41,36 @@ namespace TrunoGT
 			dataGridView1.Columns[1].HeaderCell.Value = "Расположение";
 			dataGridView1.Columns[2].HeaderCell.Value = "Дата создания";
 			dataGridView1.Columns[3].HeaderCell.Value = "Размер";
-			dataGridView1.ColumnCount = 4;
-			dataGridView1.RowCount = 100;
-			dataGridView1.Columns[0].Width = 50;
-			dataGridView1.Columns[1].Width = 150;
-			dataGridView1.Columns[0].HeaderCell.Value = "№";
-			dataGridView1.Columns[1].HeaderCell.Value = "Название";
-			dataGridView1.Columns[2].HeaderCell.Value = "Версия";
-			dataGridView1.Columns[3].HeaderCell.Value = "Дата изменения";
+			dataGridView2.ColumnCount = 4;
+			dataGridView2.RowCount = 100;
+			dataGridView2.Columns[0].Width = 50;
+			dataGridView2.Columns[1].Width = 150;
+			dataGridView2.Columns[0].HeaderCell.Value = "№";
+			dataGridView2.Columns[1].HeaderCell.Value = "Название";
+			dataGridView2.Columns[2].HeaderCell.Value = "Версия";
+			dataGridView2.Columns[3].HeaderCell.Value = "Дата изменения";
 			ListOperationsPresenter LOPresenter = new ListOperationsPresenter(this);
 
+		}
+		public string FilePathDLL
+		{
+			get { return filepathdll; }
+			set { filepathdll = value; }
+		}
+		public string newNameDLL
+		{
+			get { return newnamedll; }
+			set { newnamedll = value; }
+		}
+		public string newVersionDLL
+		{
+			get { return newversiondll; }
+			set { newversiondll = value; }
+		}
+		public string newLastChangeDLL
+		{
+			get { return newlastchangedll; }
+			set { newlastchangedll = value; }
 		}
 		public string FilePath
 		{	get { return filepath; }
@@ -53,6 +80,11 @@ namespace TrunoGT
 		{
 			get { return binindex; }
 			set { binindex = value; }
+		}
+		public int DLLIndex
+		{
+			get { return dllindex; }
+			set { dllindex = value; }
 		}
 		public string newFilePath
 		{
@@ -75,6 +107,11 @@ namespace TrunoGT
 		public event EventHandler Save;
 		public event EventHandler ReadFromFile;
 		public event EventHandler Edit;
+		public event EventHandler AddDLL;
+		public event EventHandler DeleteDLL;
+		public event EventHandler SaveDLL;
+		public event EventHandler ReadFromFileDLL;
+		public event EventHandler EditDLL;
 
 		void IForm.OutTable(List<BinaryNode> binlist)
 		{
@@ -87,6 +124,18 @@ namespace TrunoGT
 				dataGridView1.Rows[i].Cells[3].Value = binlist[i].Size;
 			}
 			
+		}
+		void IForm.OutTableDLL(List<DllNode> binlist)
+		{
+
+			for (int i = 0; i < binlist.Count; i++)
+			{
+				dataGridView2.Rows[i].Cells[0].Value = i + 1;
+				dataGridView2.Rows[i].Cells[1].Value = binlist[i].Name;
+				dataGridView2.Rows[i].Cells[2].Value = binlist[i].Vers;
+				dataGridView2.Rows[i].Cells[3].Value = binlist[i].Lastchange;
+			}
+
 		}
 		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
@@ -147,7 +196,46 @@ namespace TrunoGT
 
 		private void button6_Click(object sender, EventArgs e)
 		{
+			if (openFileDialog1.ShowDialog() == DialogResult.OK)
+			{
+				try
+				{
+					FilePathDLL = openFileDialog1.FileName;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+					$"Details:\n\n{ex.StackTrace}");
+				}
+			}
+			dataGridView1.Rows.Add();
+			AddDLL.Invoke(sender, e);
+		}
 
+		private void button7_Click(object sender, EventArgs e)
+		{
+			DLLIndex = dataGridView2.CurrentRow.Index;
+			DeleteDLL.Invoke(sender, e);
+			dataGridView2.Rows.RemoveAt(DLLIndex);
+		}
+
+		private void button8_Click(object sender, EventArgs e)
+		{
+			SaveDLL.Invoke(sender, e);
+		}
+
+		private void button9_Click(object sender, EventArgs e)
+		{
+			ReadFromFileDLL.Invoke(sender, e);
+		}
+
+		private void button10_Click(object sender, EventArgs e)
+		{
+			DLLIndex = dataGridView2.CurrentRow.Index;
+			newNameDLL = dataGridView2.Rows[DLLIndex].Cells[1].Value.ToString();
+			newVersionDLL = dataGridView2.Rows[DLLIndex].Cells[2].Value.ToString();
+			newLastChangeDLL = dataGridView2.Rows[DLLIndex].Cells[3].Value.ToString();
+			EditDLL.Invoke(sender, e);
 		}
 	}
 }

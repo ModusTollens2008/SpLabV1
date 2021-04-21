@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BusinessLogic.IModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 namespace BusinessLogic
 {
 
-    public class WorkWithFiles
+    public class WorkWithFiles:IWorkFile
     {
 
 		public  IEnumerable<BinaryNode> ReadFromBin(string filepath)

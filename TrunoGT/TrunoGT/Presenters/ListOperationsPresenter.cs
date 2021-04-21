@@ -13,7 +13,9 @@ namespace TrunoGT.Presenters
 	{
 		private IForm _IForm;
 		private IListOperations BinListOp;
-		WorkWithFiles WWFiles = new WorkWithFiles();
+		private IWorkFile WWFiles;
+		private IWorkWithXml WWXml;
+		private IListXMLOperations dllop;
 		public ListOperationsPresenter(IForm Iform)
 		{
 			_IForm = Iform;
@@ -22,7 +24,16 @@ namespace TrunoGT.Presenters
 			_IForm.Save += SaveToFile;
 			_IForm.ReadFromFile += ReadFromFile;
 			_IForm.Edit += EditNode;
+
+			_IForm.AddDLL += AddDLLNode;
+			_IForm.DeleteDLL += DeleteDLLNode;
+			_IForm.SaveDLL += SaveToFileDLL;
+			_IForm.ReadFromFileDLL += ReadFromFileDLL;
+			_IForm.EditDLL += EditDllNode;
 			BinListOp = new BinListOperations();
+			dllop = new ListOperations();
+			WWFiles = new WorkWithFiles();
+			WWXml = new WorkWithXML();
 		}
 		private void SavingList(object sender,EventArgs e)
 		{
@@ -48,6 +59,30 @@ namespace TrunoGT.Presenters
 			_IForm.OutTable(BinListOp.GetList);
 		}
 
+		private void AddDLLNode(object sender, EventArgs e)
+		{
+			dllop.addNewElement(_IForm.FilePathDLL);
+			_IForm.OutTableDLL(dllop.GetList);
+		}
+
+		private void DeleteDLLNode(object sender, EventArgs e)
+		{
+			dllop.deleteElement(_IForm.DLLIndex);
+		}
+		private void SaveToFileDLL(object sender, EventArgs e)
+		{
+			WWXml.writeList("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml",dllop.GetList);
+		}
+		private void ReadFromFileDLL(object sender, EventArgs e)
+		{
+			dllop.GetList = WWXml.readFile("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList();
+			_IForm.OutTableDLL(dllop.GetList);
+		}
+		private void EditDllNode(object sender, EventArgs e)
+		{
+			dllop.editElement(_IForm.DLLIndex,_IForm.newNameDLL, _IForm.newVersionDLL, _IForm.newLastChangeDLL);
+			_IForm.OutTableDLL(dllop.GetList);
+		}
 
 	}
 }

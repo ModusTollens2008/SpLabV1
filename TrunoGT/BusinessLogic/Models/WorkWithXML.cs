@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using BusinessLogic.IModels;
+using System.Collections.Generic;
 using System.Xml;
 namespace BusinessLogic
 {
-    public class WorkWithXML
+    public class WorkWithXML:IWorkWithXml
     {
 
-        public static IEnumerable<DllNode> readFile(string fileName)
+        public  IEnumerable<DllNode> readFile(string fileName)
         {
             List<DllNode> dllList = new List<DllNode>();
             XmlDocument xDoc = new XmlDocument();
@@ -75,7 +76,7 @@ namespace BusinessLogic
             xRoot.AppendChild(xdll);
             xDoc.Save(fileName);
         }
-        public static void writeList(string fileName, List<DllNode> dllList)
+        public void writeList(string fileName, List<DllNode> dllList)
         {
             foreach (DllNode dllNode in dllList)
             {

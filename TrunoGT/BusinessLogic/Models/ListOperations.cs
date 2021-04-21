@@ -6,10 +6,10 @@ using System.IO;
 
 namespace BusinessLogic
 {
-    public class ListOperations
+    public class ListOperations:IListXMLOperations
     {
         private List<DllNode> mainList = new List<DllNode>();       
-        public List<DllNode> MainList
+        public List<DllNode>GetList
         {
             get { return mainList; }
             set { mainList = value; }
@@ -18,19 +18,28 @@ namespace BusinessLogic
         {
             FileInfo fileInf = new FileInfo(filepath);
             if (fileInf.Exists)
-            {          
-                mainList.Add(new DllNode(fileInf.Name, FileVersionInfo.GetVersionInfo(filepath).FileVersion, fileInf.LastWriteTime.ToString()));
+            {
+				string fvers = FileVersionInfo.GetVersionInfo(filepath).FileVersion;
+				if (fvers==null)
+				{
+					fvers = "1";
+				}
+
+				mainList.Add(new DllNode(fileInf.Name, fvers, fileInf.LastWriteTime.ToString()));
             }
         }
         public void deleteElement(int index)
         {
-            mainList.Remove(mainList[index]);
+			if (index >= 0 && index <= GetList.Count && GetList != null && GetList.Count != 0)
+			{
+				mainList.RemoveAt(index);
+			}
         }
         public void editElement(int index, string name, string version, string lastchange)
         {
-            MainList[index].Name = name;
-            MainList[index].Vers = version;
-            MainList[index].Lastchange = lastchange;
+            GetList[index].Name = name;
+            GetList[index].Vers = version;
+            GetList[index].Lastchange = lastchange;
         }
         public void deleteList()
         {
@@ -49,6 +58,5 @@ namespace BusinessLogic
                 Console.WriteLine(d.Vers);
             }
         }
-
     }
 }

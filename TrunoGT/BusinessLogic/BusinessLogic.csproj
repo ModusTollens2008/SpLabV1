@@ -43,7 +43,10 @@
   <ItemGroup>
     <Compile Include="BinaryNode.cs" />
     <Compile Include="IModels\IListOperations.cs" />
+    <Compile Include="IModels\IListXMLOperations.cs" />
     <Compile Include="IModels\IStructureAnalyse.cs" />
+    <Compile Include="IModels\IWorkFile.cs" />
+    <Compile Include="IModels\IWorkWithXml.cs" />
     <Compile Include="Models\ListOperations.cs" />
     <Compile Include="Models\StructureAnalyse.cs" />
     <Compile Include="Models\BinListOperations.cs" />

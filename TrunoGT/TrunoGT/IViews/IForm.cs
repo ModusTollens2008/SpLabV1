@@ -11,8 +11,18 @@ namespace TrunoGT.IViews
 	{
 		string FilePath
 		{get; set;}
+		string FilePathDLL
+		{ get; set; }
+		string newNameDLL
+		{ get; set; }
+		string newVersionDLL
+		{ get; set; }
+		string newLastChangeDLL
+		{ get; set; }
 		int BinIndex
 		{get; set;}
+		int DLLIndex
+		{ get; set; }
 		string newFilePath
 		{get; set;}
 		string newCreateDate
@@ -26,5 +36,12 @@ namespace TrunoGT.IViews
 		event EventHandler Save;
 		event EventHandler ReadFromFile;
 		event EventHandler Edit;
+
+		void OutTableDLL(List<DllNode> dlllist);
+		event EventHandler AddDLL;
+		event EventHandler DeleteDLL;
+		event EventHandler SaveDLL;
+		event EventHandler ReadFromFileDLL;
+		event EventHandler EditDLL;
 	}
 }
