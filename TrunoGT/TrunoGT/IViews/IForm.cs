@@ -66,6 +66,10 @@ namespace TrunoGT.IViews
 		{
 			get; set;
 		}
+        string FileLog
+        {
+            get;set;
+        }
 
 		void OutTable(List<BinaryNode> binlist);
 		event EventHandler Add;

@@ -11,8 +11,8 @@ namespace BusinessLogic
 		public  IEnumerable<BinaryNode> ReadFromBin(string filepath)
 		{
 			List<BinaryNode> p = new List<BinaryNode>();
-			try
-			{
+			
+			
 				// создаем объект BinaryReader
 				using (BinaryReader reader = new BinaryReader(File.Open(filepath, FileMode.Open)))
 				{
@@ -26,17 +26,13 @@ namespace BusinessLogic
 						p.Add(new BinaryNode(BinFilepath, BinSize, BinDate));
 					}
 				}
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
+			
+			
 			return p;
 		}
 		public  void WriteBinFile(string filename,List<BinaryNode> binlist)
 		{
-			try
-			{
+			
 				// создаем объект BinaryWriter
 				using (BinaryWriter writer = new BinaryWriter(File.Open(filename, FileMode.OpenOrCreate)))
 				{
@@ -49,11 +45,8 @@ namespace BusinessLogic
 					}
 				}
 
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
+			
+			
 ;
 		}
 		

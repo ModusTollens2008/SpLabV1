@@ -16,7 +16,7 @@ namespace BusinessLogic
         }
         public void addNewElement(string filepath)
         {
-            FileInfo fileInf = new FileInfo(filepath);
+            FileInfo fileInf = new FileInfo(filepath);        
             if (fileInf.Exists)
             {
 				string fvers = FileVersionInfo.GetVersionInfo(filepath).FileVersion;

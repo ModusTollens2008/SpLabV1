@@ -25,10 +25,7 @@ namespace TrunoGT
 		private string filepathdll;
 		private string newnamedll;
 		private string newversiondll;
-		private string newlastchangedll;
-
-
-		private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+		private string newlastchangedll;	
 		private string code;
 		private string codegt;
 		private string result;
@@ -38,8 +35,11 @@ namespace TrunoGT
 		private string xornum;
 		private int xorres;
 		private string lowlog;
+        private string filelog;
 
-		public Form1()
+        private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+        public Form1()
 		{
 			InitializeComponent();
 			dataGridView1.ColumnCount = 4;
@@ -154,6 +154,14 @@ namespace TrunoGT
 			get { return lowlog; }
 			set { lowlog = value; }
 		}
+        public string FileLog
+        {
+            get { return filelog; }
+            set { filelog = value; }
+        }
+
+
+
 
 		public event EventHandler Add;
 		public event EventHandler Delete;
@@ -201,7 +209,6 @@ namespace TrunoGT
 		
 		private void button1_Click(object sender, EventArgs e)
 		{
-		
 			if (openFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				try
@@ -216,8 +223,9 @@ namespace TrunoGT
 			}
 			dataGridView1.Rows.Add();
 			Add.Invoke(sender, e);
+            fileBoxLog.Text = FileLog;
 
-		}
+        }
 
 		private void tabPage2_Click(object sender, EventArgs e)
 		{
@@ -229,27 +237,43 @@ namespace TrunoGT
 			BinIndex = dataGridView1.CurrentRow.Index;
 			Delete.Invoke(sender, e);
 			dataGridView1.Rows.RemoveAt(BinIndex);
-		}
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button3_Click(object sender, EventArgs e)
 		{
 			Save.Invoke(sender, e);
+            fileBoxLog.Text = FileLog;
 		}
 
 		private void button4_Click(object sender, EventArgs e)
-		{
-			
+		{	
 			ReadFromFile.Invoke(sender, e);
-		}
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			BinIndex = dataGridView1.CurrentRow.Index;
-			newFilePath = dataGridView1.Rows[BinIndex].Cells[1].Value.ToString();
-			newCreateDate = dataGridView1.Rows[BinIndex].Cells[2].Value.ToString();
-			newSize = dataGridView1.Rows[BinIndex].Cells[3].Value.ToString();
-			Edit.Invoke(sender,e);
-		}
+            try
+            {
+                BinIndex = dataGridView1.CurrentRow.Index;
+                newFilePath = dataGridView1.Rows[BinIndex].Cells[1].Value.ToString();
+                newCreateDate = dataGridView1.Rows[BinIndex].Cells[2].Value.ToString();
+                newSize = dataGridView1.Rows[BinIndex].Cells[3].Value.ToString();
+                Edit.Invoke(sender, e);
+            }
+            catch (NullReferenceException)
+            {
+                FileLog += "ERROR: Выберите файл для редактирования!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                fileBoxLog.Text = FileLog;
+            }
+            catch (Exception)
+            {
+                FileLog += "ERROR: При сохранении произошла неизвестная ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                fileBoxLog.Text = FileLog;
+            }
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button6_Click(object sender, EventArgs e)
 		{
@@ -267,33 +291,51 @@ namespace TrunoGT
 			}
 			dataGridView1.Rows.Add();
 			AddDLL.Invoke(sender, e);
-		}
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button7_Click(object sender, EventArgs e)
 		{
 			DLLIndex = dataGridView2.CurrentRow.Index;
 			DeleteDLL.Invoke(sender, e);
 			dataGridView2.Rows.RemoveAt(DLLIndex);
-		}
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button8_Click(object sender, EventArgs e)
 		{
 			SaveDLL.Invoke(sender, e);
-		}
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button9_Click(object sender, EventArgs e)
 		{
 			ReadFromFileDLL.Invoke(sender, e);
-		}
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void button10_Click(object sender, EventArgs e)
 		{
-			DLLIndex = dataGridView2.CurrentRow.Index;
-			newNameDLL = dataGridView2.Rows[DLLIndex].Cells[1].Value.ToString();
-			newVersionDLL = dataGridView2.Rows[DLLIndex].Cells[2].Value.ToString();
-			newLastChangeDLL = dataGridView2.Rows[DLLIndex].Cells[3].Value.ToString();
-			EditDLL.Invoke(sender, e);
-		}
+            try
+            {
+                DLLIndex = dataGridView2.CurrentRow.Index;
+                newNameDLL = dataGridView2.Rows[DLLIndex].Cells[1].Value.ToString();
+                newVersionDLL = dataGridView2.Rows[DLLIndex].Cells[2].Value.ToString();
+                newLastChangeDLL = dataGridView2.Rows[DLLIndex].Cells[3].Value.ToString();
+                EditDLL.Invoke(sender, e);
+            }
+            catch (NullReferenceException)
+            {
+                FileLog += "ERROR: Выберите файл для редактирования!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                fileBoxLog.Text = FileLog;
+            }
+            catch (Exception)
+            {
+                FileLog += "ERROR: При сохранении произошла неизвестная ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                fileBoxLog.Text = FileLog;
+            }
+            fileBoxLog.Text = FileLog;
+        }
 
 		private void mul_Click(object sender, EventArgs e)
 		{
@@ -315,7 +357,9 @@ namespace TrunoGT
 			boxFirstNum.Clear();
 			boxSecondNum.Clear();
 			mul.Enabled = true;
-		}
+            LowLog += "Значения очищены для умножения" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            lowLevelLog.Text = LowLog;
+        }
 
 		private void xor_Click(object sender, EventArgs e)
 		{
@@ -326,6 +370,7 @@ namespace TrunoGT
 			xor.Enabled = false;
 			boxXOR.ReadOnly = true;
 			lowLevelLog.Text = LowLog;
+
 		}
 
 		private void xorClr_Click(object sender, EventArgs e)
@@ -334,7 +379,9 @@ namespace TrunoGT
 			xor.Enabled = true;
 			boxXOR.Clear();
 			resBOX.Clear();
-		}
+            LowLog += "Значения очищены для НЕ" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            lowLevelLog.Text = LowLog;
+        }
 
 		private void analyze10_Click(object sender, EventArgs e)
 		{
