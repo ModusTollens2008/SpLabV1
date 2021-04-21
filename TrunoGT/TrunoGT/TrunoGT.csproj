@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IViews\IForm.cs" />
+    <Compile Include="Presenters\AnalyzePresenter.cs" />
     <Compile Include="Presenters\ListOperationsPresenter.cs" />
+    <Compile Include="Presenters\LowLevelPresenter.cs" />
     <Compile Include="Views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

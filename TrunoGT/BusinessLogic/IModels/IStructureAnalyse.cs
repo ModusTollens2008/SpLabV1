@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.IModels
 {
-	interface IStructureAnalyse
+	public interface IStructureAnalyse
 	{
 		
 		int CheckStucture(string code);

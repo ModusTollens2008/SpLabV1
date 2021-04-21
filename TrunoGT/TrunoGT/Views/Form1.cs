@@ -29,6 +29,15 @@ namespace TrunoGT
 
 
 		private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+		private string code;
+		private string codegt;
+		private string result;
+		private string firstnum;
+		private string secondnum;
+		private int mulresult;
+		private string xornum;
+		private int xorres;
+		private string lowlog;
 
 		public Form1()
 		{
@@ -50,6 +59,8 @@ namespace TrunoGT
 			dataGridView2.Columns[2].HeaderCell.Value = "Версия";
 			dataGridView2.Columns[3].HeaderCell.Value = "Дата изменения";
 			ListOperationsPresenter LOPresenter = new ListOperationsPresenter(this);
+			AnalyzePresenter analyzePresenter = new AnalyzePresenter(this);
+			LowLevelPresenter lowLevelPresenter = new LowLevelPresenter(this);
 
 		}
 		public string FilePathDLL
@@ -102,6 +113,48 @@ namespace TrunoGT
 			set { newsize = value; }
 		}
 
+		public string Code
+		{	get  {return code; }
+			set { code = value; }
+		}
+
+		public string CodeGT {
+			get { return codegt; }
+			set { codegt = value; }
+		}
+		public string Result {
+			get { return result; }
+			set { result = value; }
+		}
+		public string FirstNum {
+			get { return firstnum; }
+			set { firstnum = value; }
+		}
+		public string SecondNum {
+			get { return secondnum; }
+			set { secondnum = value; }
+		}
+		public int MulResult
+		{
+			get { return mulresult; }
+			set { mulresult = value; }
+		}
+		public string XorNum
+		{
+			get { return xornum; }
+			set { xornum = value; }
+		}
+		public int XorRes
+		{
+			get { return xorres; }
+			set { xorres = value; }
+		}
+		public string LowLog
+		{
+			get { return lowlog; }
+			set { lowlog = value; }
+		}
+
 		public event EventHandler Add;
 		public event EventHandler Delete;
 		public event EventHandler Save;
@@ -112,6 +165,10 @@ namespace TrunoGT
 		public event EventHandler SaveDLL;
 		public event EventHandler ReadFromFileDLL;
 		public event EventHandler EditDLL;
+		public event EventHandler Analyze10;
+		public event EventHandler Analyze13;
+		public event EventHandler XOR;
+		public event EventHandler Mul;
 
 		void IForm.OutTable(List<BinaryNode> binlist)
 		{
@@ -236,6 +293,61 @@ namespace TrunoGT
 			newVersionDLL = dataGridView2.Rows[DLLIndex].Cells[2].Value.ToString();
 			newLastChangeDLL = dataGridView2.Rows[DLLIndex].Cells[3].Value.ToString();
 			EditDLL.Invoke(sender, e);
+		}
+
+		private void mul_Click(object sender, EventArgs e)
+		{
+			FirstNum = boxFirstNum.Text;
+			SecondNum = boxSecondNum.Text;
+			Mul.Invoke(sender, e);
+			boxSecondNum.Text = "Результат = " + MulResult;
+			boxFirstNum.Text = "Умножаем " + FirstNum + " на " + SecondNum;
+			boxSecondNum.ReadOnly = true;
+			boxFirstNum.ReadOnly = true;
+			lowLevelLog.Text = LowLog;
+			mul.Enabled = false;
+		}
+
+		private void clr_Click(object sender, EventArgs e)
+		{
+			boxFirstNum.ReadOnly = false;
+			boxSecondNum.ReadOnly = false;
+			boxFirstNum.Clear();
+			boxSecondNum.Clear();
+			mul.Enabled = true;
+		}
+
+		private void xor_Click(object sender, EventArgs e)
+		{
+			XorNum = boxXOR.Text;
+			XOR.Invoke(sender, e);
+			resBOX.Text = "Результат = " + XorRes;
+			boxXOR.Text = "Исходное число=  " + XorNum;
+			xor.Enabled = false;
+			boxXOR.ReadOnly = true;
+			lowLevelLog.Text = LowLog;
+		}
+
+		private void xorClr_Click(object sender, EventArgs e)
+		{
+			boxXOR.ReadOnly = false;
+			xor.Enabled = true;
+			boxXOR.Clear();
+			resBOX.Clear();
+		}
+
+		private void analyze10_Click(object sender, EventArgs e)
+		{
+			Code = text4Analyze10.Text;
+			Analyze10.Invoke(sender, e);
+			result10Box.Text = Result;
+		}
+
+		private void analyze13_Click(object sender, EventArgs e)
+		{
+			CodeGT = text4Analyze13.Text;
+			Analyze13.Invoke(sender, e);
+			result13Box.Text = Result;
 		}
 	}
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic
 {
-    class StructureAnalyse: IStructureAnalyse
+    public class StructureAnalyse: IStructureAnalyse
 	{
 
             public  int CheckStucture(string code)

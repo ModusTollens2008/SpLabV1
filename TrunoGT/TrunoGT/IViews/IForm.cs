@@ -9,6 +9,19 @@ namespace TrunoGT.IViews
 {
 	interface IForm
 	{
+
+		string Code
+		{
+			get; set;
+		}
+		string CodeGT
+		{
+			get; set;
+		}
+		string Result
+		{
+			get; set;
+		}
 		string FilePath
 		{get; set;}
 		string FilePathDLL
@@ -29,6 +42,30 @@ namespace TrunoGT.IViews
 		{get; set;}
 		string newSize
 		{get; set;}
+		string FirstNum
+		{
+			get; set;
+		}
+		string SecondNum
+		{
+			get; set;
+		}
+		int MulResult
+		{
+			get; set;
+		}
+		string XorNum
+		{
+			get; set;
+		}
+		int XorRes
+		{
+			get; set;
+		}
+		string LowLog
+		{
+			get; set;
+		}
 
 		void OutTable(List<BinaryNode> binlist);
 		event EventHandler Add;
@@ -43,5 +80,10 @@ namespace TrunoGT.IViews
 		event EventHandler SaveDLL;
 		event EventHandler ReadFromFileDLL;
 		event EventHandler EditDLL;
+
+		event EventHandler Analyze10;
+		event EventHandler Analyze13;
+		event EventHandler XOR;
+		event EventHandler Mul;
 	}
 }
