@@ -159,7 +159,10 @@ namespace TrunoGT
             get { return filelog; }
             set { filelog = value; }
         }
-
+        public string AnalyseLog
+        {
+            get; set;
+        }
 
 
 
@@ -388,6 +391,7 @@ namespace TrunoGT
 			Code = text4Analyze10.Text;
 			Analyze10.Invoke(sender, e);
 			result10Box.Text = Result;
+            logBoxAnalyse.Text = AnalyseLog;
 		}
 
 		private void analyze13_Click(object sender, EventArgs e)
@@ -395,6 +399,7 @@ namespace TrunoGT
 			CodeGT = text4Analyze13.Text;
 			Analyze13.Invoke(sender, e);
 			result13Box.Text = Result;
-		}
+            logBoxAnalyse.Text = AnalyseLog;
+        }
 	}
 }

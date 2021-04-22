@@ -16,8 +16,10 @@ namespace BusinessLogic
             public  int CheckStucture(string code)
             {
                 int start = IsFitVar10(code);
-                if (start == -1)
-                    return 0;
+            if (start == -1)
+            {               
+                return -1;       
+            }
                 while (code[start] == ' ')
                     start++;
                 switch (code[start])
@@ -54,16 +56,14 @@ namespace BusinessLogic
                             return count;
                         }}
                     }}");
-				var method = results.CompiledAssembly.GetType("Checker").GetMethod("F");
-				var func = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), null, method);
-				return func();
-				
-			}
-
-			catch (FileNotFoundException)
-			{
-				throw new ArgumentException("Input should be valid C# expression", nameof(code));
-			}
+                    var method = results.CompiledAssembly.GetType("Checker").GetMethod("F");
+                    var func = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), null, method);
+                    return func();
+                }
+                catch (FileNotFoundException)
+                {                 
+                    throw new ArgumentException("Input should be valid C# expression", nameof(code));              
+                }
             }
 
             private static int IsFitVar10(string code)
@@ -94,7 +94,7 @@ namespace BusinessLogic
 		{
 			int start = IsFitVar101(code);
 			if (start == -1)
-				return 0;
+				return -1;
 			while (code[start] == ' ')
 				start++;
 			switch (code[start])
