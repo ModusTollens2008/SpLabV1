@@ -4,27 +4,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrunoGT.IViews;
-using BusinessLogic;
-using BusinessLogic.IModels;
+using TrunoGT.Models;
 
 namespace TrunoGT.Presenters
 {
 	class AnalyzePresenter
 	{
 		private IForm _IForm;
-		private IStructureAnalyse _Istr;
+		private ModelAnalyse _Istr;
 		public AnalyzePresenter(IForm Iform)
 		{
 			_IForm = Iform;
 			_IForm.Analyze10 += Analyze10;
 			_IForm.Analyze13 += Analyze13;
-			_Istr = new StructureAnalyse();
+			_Istr = new ModelAnalyse();
             _IForm.AnalyseLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
         }
 		public void Analyze10(object sender, EventArgs e)
 		{
-            int a;
-			a = _Istr.CheckStucture(_IForm.Code);
+            int a=0;
+            try
+            {
+                a = _Istr.CheckStucture(_IForm.Code);
+            }
+            catch (Exception)
+            {
+                _IForm.AnalyseLog += "SUNCTION" + a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            }
             if (a >= 0)
             {
                 _IForm.Result = a.ToString();

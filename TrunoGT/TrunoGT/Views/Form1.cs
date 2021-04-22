@@ -112,12 +112,10 @@ namespace TrunoGT
 			get { return newsize; }
 			set { newsize = value; }
 		}
-
 		public string Code
 		{	get  {return code; }
 			set { code = value; }
 		}
-
 		public string CodeGT {
 			get { return codegt; }
 			set { codegt = value; }
