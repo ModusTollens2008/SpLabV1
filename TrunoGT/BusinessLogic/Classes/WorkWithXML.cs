@@ -37,10 +37,7 @@ namespace BusinessLogic
                         changedate = childNode.InnerText;
                     }
                 }
-
                 dllList.Add(new DllNode(name, version, changedate));
-
-
             }
 
             return dllList;

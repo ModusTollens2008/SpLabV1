@@ -10,5 +10,6 @@ namespace BusinessLogic.IModels
 	{
 		void WriteBinFile(string filename, List<BinaryNode> binlist);
 		IEnumerable<BinaryNode>ReadFromBin(string filepath);
+		void WriteToBD(List<BinaryNode> binlist);
 	}
 }

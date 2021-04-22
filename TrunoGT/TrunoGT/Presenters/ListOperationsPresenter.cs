@@ -59,14 +59,15 @@ namespace TrunoGT.Presenters
             try
             { WWFiles.WriteBinFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
                 _IForm.FileLog += "Запись сохранена в файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+				WWFiles.WriteToBD(BinListOp.GetList);
             }
             catch (System.IO.IOException)
             {
                 _IForm.FileLog += "ERROR: Произошла ошибка при открытии бинарного файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
             }
-            catch (Exception)
+           // catch (Exception)
             {
-                _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+             //   _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
             }
             
         }

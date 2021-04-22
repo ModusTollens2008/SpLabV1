@@ -5,9 +5,32 @@ using System.IO;
 namespace BusinessLogic
 {
 
-    public class WorkWithFiles:IWorkFile
+	public class WorkWithFiles:IWorkFile
     {
+		public void WriteToBD(List<BinaryNode> binlist)
+		{
+			using (UserContext db = new UserContext())
+			{
+				// создаем два объекта User
 
+				// добавляем их в бд
+
+				db.BinNodes.Add(binlist[0]);
+
+				
+				db.SaveChanges();
+				Console.WriteLine("Объекты успешно сохранены");
+
+				// получаем объекты из бд и выводим на консоль
+				var users = db.BinNodes;
+				Console.WriteLine("Список объектов:");
+				foreach (BinaryNode u in users)
+				{
+					Console.WriteLine("{0}.{1} - {2}", u.Filepath);
+				}
+			}
+		}
+	
 		public  IEnumerable<BinaryNode> ReadFromBin(string filepath)
 		{
 			List<BinaryNode> p = new List<BinaryNode>();
