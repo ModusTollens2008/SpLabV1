@@ -399,6 +399,7 @@ namespace TrunoGT
 			CodeGT = text4Analyze13.Text;
 			Analyze13.Invoke(sender, e);
 			result13Box.Text = Result;
-		}
+            logBoxAnalyse.Text = AnalyseLog;
+        }
 	}
 }

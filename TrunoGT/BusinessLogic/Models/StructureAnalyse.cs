@@ -17,8 +17,7 @@ namespace BusinessLogic
             {
                 int start = IsFitVar10(code);
             if (start == -1)
-            {
-                Console.WriteLine("ERROR");
+            {               
                 return -1;       
             }
                 while (code[start] == ' ')
@@ -92,7 +91,7 @@ namespace BusinessLogic
 		{
 			int start = IsFitVar101(code);
 			if (start == -1)
-				return 0;
+				return -1;
 			while (code[start] == ' ')
 				start++;
 			switch (code[start])

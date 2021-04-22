@@ -28,6 +28,7 @@ namespace TrunoGT.Presenters
             if (a >= 0)
             {
                 _IForm.Result = a.ToString();
+                _IForm.AnalyseLog += "Анализ цикла произошел успешно! Количество иттераций = " +a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
             }
             else {
                 _IForm.AnalyseLog += "Неверно введен код для анализа цикла foreach!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
@@ -36,7 +37,18 @@ namespace TrunoGT.Presenters
         }
 		public void Analyze13(object sender, EventArgs e)
 		{
-			_IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();
+            int a;
+            a = _Istr.CheckWhileDoStucture(_IForm.CodeGT);
+            if (a >= 0)
+            {
+                _IForm.AnalyseLog += "Анализ цикла do while произошел успешно! Количество иттераций = " + a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                _IForm.Result= a.ToString();
+            }
+            
+                else _IForm.AnalyseLog += "Неверно введен код для анализа цикла do while!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            
+            //_IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();
+
 			/* int[] a = new int[] { 1, 2, 3 };
 			 foreach (int b in a)
 			 {
