@@ -1,12 +1,11 @@
 ﻿using BusinessLogic.IModels;
-using BusinessLogic.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 namespace BusinessLogic
 {
 
-    public class WorkWithFiles:IWorkFile
+	public class WorkWithFiles:IWorkFile
     {
 		public void WriteToBD(List<BinaryNode> binlist)
 		{
