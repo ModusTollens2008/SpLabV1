@@ -1,12 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <dlls>
-  <dll name="TRUNOGTFILExml.xml">
-    <version>
-    </version>
-    <changedate>21.04.2021 22:50:52</changedate>
-  </dll>
-  <dll name="TRUNOGTFILExml.xml">
+  <dll name="Новый текстовый документ.dll">
     <version>1</version>
-    <changedate>21.04.2021 22:51:02</changedate>
+    <changedate>22.04.2021 9:43:56</changedate>
+  </dll>
+  <dll name="Новый текстовый документ.dll">
+    <version>1</version>
+    <changedate>22.04.2021 9:43:56</changedate>
+  </dll>
+  <dll name="Новый текстовый документ.dll">
+    <version>1</version>
+    <changedate>22.04.2021 9:43:56</changedate>
+  </dll>
+  <dll name="Новый текстовый документ.dll">
+    <version>1</version>
+    <changedate>22.04.2021 9:43:56</changedate>
+  </dll>
+  <dll name="Новый текстовый документ.dll">
+    <version>1</version>
+    <changedate>22.04.2021 9:43:56</changedate>
   </dll>
 </dlls>

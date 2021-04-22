@@ -1,25 +1,24 @@
-﻿using LowFunctions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrunoGT.IViews;
+using TrunoGT.Models;
 
 namespace TrunoGT.Presenters
 {
 	class LowLevelPresenter
 	{
 		private IForm _IForm;
-		private LowLevelFunctions _ILow;
+        private ModelLowLevel _ILow=new ModelLowLevel();
 
 		public LowLevelPresenter(IForm Iform)
 		{
 			_IForm = Iform;
 			_IForm.Mul += Mul;
 			_IForm.XOR += XOR;
-			_ILow = new LowLevelFunctions();
-			_IForm.LowLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            _IForm.LowLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 		}
 		public void Mul(object sender, EventArgs e)
 		{
@@ -75,7 +74,7 @@ namespace TrunoGT.Presenters
 			}
 			else
 			{
-				_IForm.MulResult = _ILow.LowLevelMultiple(a, b);
+				_IForm.MulResult = _ILow.Mul(a, b);
 				_IForm.LowLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			}
 		}
@@ -103,7 +102,7 @@ namespace TrunoGT.Presenters
 			{
 				_IForm.LowLog += "Неизвестная ошибка в обработке первого числа!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			}
-			_IForm.XorRes = _ILow.LowLevelNot(a);
+			_IForm.XorRes = _ILow.XOR(a);
 			_IForm.LowLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 		}
 	}
