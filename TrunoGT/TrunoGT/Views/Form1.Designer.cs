@@ -30,6 +30,11 @@
 		{
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lowLevelLog = new System.Windows.Forms.RichTextBox();
             this.xorClr = new System.Windows.Forms.Button();
             this.xor = new System.Windows.Forms.Button();
@@ -40,6 +45,8 @@
             this.boxSecondNum = new System.Windows.Forms.TextBox();
             this.boxFirstNum = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.fileBoxLog = new System.Windows.Forms.RichTextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -53,23 +60,22 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
+            this.logBoxAnalyse = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.analyze13 = new System.Windows.Forms.Button();
             this.analyze10 = new System.Windows.Forms.Button();
             this.text4Analyze13 = new System.Windows.Forms.RichTextBox();
             this.text4Analyze10 = new System.Windows.Forms.RichTextBox();
             this.result13Box = new System.Windows.Forms.TextBox();
             this.result10Box = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.fileBoxLog = new System.Windows.Forms.RichTextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.logBoxAnalyse = new System.Windows.Forms.RichTextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.boxMulRes = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tenTusk = new System.Windows.Forms.RichTextBox();
+            this.thTusk = new System.Windows.Forms.RichTextBox();
+            this.tusk13Box = new System.Windows.Forms.RichTextBox();
+            this.tusk10Box = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -91,6 +97,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.thTusk);
+            this.tabPage1.Controls.Add(this.tenTusk);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.boxMulRes);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
@@ -113,6 +123,51 @@
             this.tabPage1.Text = "Анализатор";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 233);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Лог";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(263, 189);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Результат";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(263, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Исходное число";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Второе число";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Первое число";
+            // 
             // lowLevelLog
             // 
             this.lowLevelLog.Location = new System.Drawing.Point(12, 249);
@@ -124,7 +179,7 @@
             // 
             // xorClr
             // 
-            this.xorClr.Location = new System.Drawing.Point(4, 128);
+            this.xorClr.Location = new System.Drawing.Point(4, 185);
             this.xorClr.Name = "xorClr";
             this.xorClr.Size = new System.Drawing.Size(82, 20);
             this.xorClr.TabIndex = 7;
@@ -134,7 +189,7 @@
             // 
             // xor
             // 
-            this.xor.Location = new System.Drawing.Point(6, 102);
+            this.xor.Location = new System.Drawing.Point(6, 159);
             this.xor.Name = "xor";
             this.xor.Size = new System.Drawing.Size(78, 20);
             this.xor.TabIndex = 6;
@@ -164,7 +219,7 @@
             // 
             // resBOX
             // 
-            this.resBOX.Location = new System.Drawing.Point(92, 128);
+            this.resBOX.Location = new System.Drawing.Point(92, 185);
             this.resBOX.Name = "resBOX";
             this.resBOX.ReadOnly = true;
             this.resBOX.Size = new System.Drawing.Size(157, 20);
@@ -172,7 +227,7 @@
             // 
             // boxXOR
             // 
-            this.boxXOR.Location = new System.Drawing.Point(92, 102);
+            this.boxXOR.Location = new System.Drawing.Point(92, 159);
             this.boxXOR.Name = "boxXOR";
             this.boxXOR.Size = new System.Drawing.Size(157, 20);
             this.boxXOR.TabIndex = 2;
@@ -215,6 +270,23 @@
             this.tabPage2.Text = "Записи о файлах";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(475, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(25, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Log";
+            // 
+            // fileBoxLog
+            // 
+            this.fileBoxLog.Location = new System.Drawing.Point(478, 22);
+            this.fileBoxLog.Name = "fileBoxLog";
+            this.fileBoxLog.Size = new System.Drawing.Size(316, 426);
+            this.fileBoxLog.TabIndex = 12;
+            this.fileBoxLog.Text = "";
             // 
             // button10
             // 
@@ -335,6 +407,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tusk10Box);
+            this.tabPage3.Controls.Add(this.tusk13Box);
             this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Controls.Add(this.logBoxAnalyse);
             this.tabPage3.Controls.Add(this.label8);
@@ -352,11 +426,46 @@
             this.tabPage3.Text = "Низкоуровневые функции";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(384, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(26, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Лог";
+            // 
+            // logBoxAnalyse
+            // 
+            this.logBoxAnalyse.Location = new System.Drawing.Point(384, 24);
+            this.logBoxAnalyse.Name = "logBoxAnalyse";
+            this.logBoxAnalyse.Size = new System.Drawing.Size(406, 419);
+            this.logBoxAnalyse.TabIndex = 8;
+            this.logBoxAnalyse.Text = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 433);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(221, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Была ли хотя бы одна иттерация do while?";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 194);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(193, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Количество иттераций цикла foreach";
+            // 
             // analyze13
             // 
-            this.analyze13.Location = new System.Drawing.Point(205, 345);
+            this.analyze13.Location = new System.Drawing.Point(230, 325);
             this.analyze13.Name = "analyze13";
-            this.analyze13.Size = new System.Drawing.Size(121, 50);
+            this.analyze13.Size = new System.Drawing.Size(96, 37);
             this.analyze13.TabIndex = 5;
             this.analyze13.Text = "Анализ!";
             this.analyze13.UseVisualStyleBackColor = true;
@@ -364,9 +473,9 @@
             // 
             // analyze10
             // 
-            this.analyze10.Location = new System.Drawing.Point(202, 133);
+            this.analyze10.Location = new System.Drawing.Point(230, 116);
             this.analyze10.Name = "analyze10";
-            this.analyze10.Size = new System.Drawing.Size(124, 48);
+            this.analyze10.Size = new System.Drawing.Size(96, 35);
             this.analyze10.TabIndex = 4;
             this.analyze10.Text = "Анализ!";
             this.analyze10.UseVisualStyleBackColor = true;
@@ -376,21 +485,21 @@
             // 
             this.text4Analyze13.Location = new System.Drawing.Point(6, 227);
             this.text4Analyze13.Name = "text4Analyze13";
-            this.text4Analyze13.Size = new System.Drawing.Size(320, 112);
+            this.text4Analyze13.Size = new System.Drawing.Size(320, 92);
             this.text4Analyze13.TabIndex = 3;
             this.text4Analyze13.Text = "";
             // 
             // text4Analyze10
             // 
-            this.text4Analyze10.Location = new System.Drawing.Point(3, 15);
+            this.text4Analyze10.Location = new System.Drawing.Point(6, 15);
             this.text4Analyze10.Name = "text4Analyze10";
-            this.text4Analyze10.Size = new System.Drawing.Size(323, 112);
+            this.text4Analyze10.Size = new System.Drawing.Size(323, 95);
             this.text4Analyze10.TabIndex = 2;
             this.text4Analyze10.Text = "";
             // 
             // result13Box
             // 
-            this.result13Box.Location = new System.Drawing.Point(230, 401);
+            this.result13Box.Location = new System.Drawing.Point(230, 430);
             this.result13Box.Name = "result13Box";
             this.result13Box.ReadOnly = true;
             this.result13Box.Size = new System.Drawing.Size(93, 20);
@@ -404,102 +513,61 @@
             this.result10Box.Size = new System.Drawing.Size(121, 20);
             this.result10Box.TabIndex = 0;
             // 
-            // label1
+            // boxMulRes
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Первое число";
+            this.boxMulRes.Location = new System.Drawing.Point(92, 78);
+            this.boxMulRes.Name = "boxMulRes";
+            this.boxMulRes.Size = new System.Drawing.Size(157, 20);
+            this.boxMulRes.TabIndex = 14;
             // 
-            // label2
+            // label10
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Второе число";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Результат";
             // 
-            // label3
+            // tenTusk
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(262, 102);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Число";
+            this.tenTusk.Location = new System.Drawing.Point(403, 26);
+            this.tenTusk.Name = "tenTusk";
+            this.tenTusk.ReadOnly = true;
+            this.tenTusk.Size = new System.Drawing.Size(387, 72);
+            this.tenTusk.TabIndex = 16;
+            this.tenTusk.Text = "Вариант №10\nЗадание: Умножить два целочисленных значения без знака с проверкой пе" +
+    "реполнения\nИсполнитель: Бочкарев Михаил\nГруппа: 6304";
             // 
-            // label4
+            // thTusk
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(262, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Результат";
+            this.thTusk.Location = new System.Drawing.Point(403, 156);
+            this.thTusk.Name = "thTusk";
+            this.thTusk.ReadOnly = true;
+            this.thTusk.Size = new System.Drawing.Size(387, 59);
+            this.thTusk.TabIndex = 17;
+            this.thTusk.Text = "Вариант №13\nЗадание: Вычислить побитовое НЕ\nИсполнитель: Грушин Анатолий\nГруппа: " +
+    "6304";
             // 
-            // label5
+            // tusk13Box
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 233);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Лог";
+            this.tusk13Box.Location = new System.Drawing.Point(6, 325);
+            this.tusk13Box.Name = "tusk13Box";
+            this.tusk13Box.ReadOnly = true;
+            this.tusk13Box.Size = new System.Drawing.Size(218, 105);
+            this.tusk13Box.TabIndex = 10;
+            this.tusk13Box.Text = "Цикл с постусловием do \n{<тело цикла>}while\n(<условие>)\nОпределить,выполнится ли " +
+    "больше одного раза\nИсполнитель: Грушин Анатолий\nГруппа: 6304";
             // 
-            // fileBoxLog
+            // tusk10Box
             // 
-            this.fileBoxLog.Location = new System.Drawing.Point(478, 22);
-            this.fileBoxLog.Name = "fileBoxLog";
-            this.fileBoxLog.Size = new System.Drawing.Size(316, 426);
-            this.fileBoxLog.TabIndex = 12;
-            this.fileBoxLog.Text = "";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(475, 6);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Log";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 194);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(193, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Количество иттераций цикла foreach";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 404);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(221, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Была ли хотя бы одна иттерация do while?";
-            // 
-            // logBoxAnalyse
-            // 
-            this.logBoxAnalyse.Location = new System.Drawing.Point(384, 24);
-            this.logBoxAnalyse.Name = "logBoxAnalyse";
-            this.logBoxAnalyse.Size = new System.Drawing.Size(406, 419);
-            this.logBoxAnalyse.TabIndex = 8;
-            this.logBoxAnalyse.Text = "";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(384, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Лог";
+            this.tusk10Box.Location = new System.Drawing.Point(6, 116);
+            this.tusk10Box.Name = "tusk10Box";
+            this.tusk10Box.ReadOnly = true;
+            this.tusk10Box.Size = new System.Drawing.Size(218, 72);
+            this.tusk10Box.TabIndex = 11;
+            this.tusk10Box.Text = "Цикл-перебора foreach\n(<элемент>in <массив>){<тело цикла>}\nПосчитать сколько раз " +
+    "выполнится цикл\nИсполнитель: Бочкарев Михаил\nГруппа: 6304";
             // 
             // Form1
             // 
@@ -566,6 +634,12 @@
         private System.Windows.Forms.RichTextBox logBoxAnalyse;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RichTextBox thTusk;
+        private System.Windows.Forms.RichTextBox tenTusk;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox boxMulRes;
+        private System.Windows.Forms.RichTextBox tusk10Box;
+        private System.Windows.Forms.RichTextBox tusk13Box;
     }
 }
 

@@ -338,10 +338,10 @@ namespace TrunoGT
 			FirstNum = boxFirstNum.Text;
 			SecondNum = boxSecondNum.Text;
 			Mul.Invoke(sender, e);
-			boxSecondNum.Text = "Результат = " + MulResult;
-			boxFirstNum.Text = "Умножаем " + FirstNum + " на " + SecondNum;
+			boxMulRes.Text=""+MulResult;			
 			boxSecondNum.ReadOnly = true;
 			boxFirstNum.ReadOnly = true;
+            boxMulRes.ReadOnly = true;
 			lowLevelLog.Text = LowLog;
 			mul.Enabled = false;
 		}
@@ -350,9 +350,11 @@ namespace TrunoGT
 		{
 			boxFirstNum.ReadOnly = false;
 			boxSecondNum.ReadOnly = false;
-			boxFirstNum.Clear();
+            boxMulRes.ReadOnly = false;
+            boxFirstNum.Clear();
 			boxSecondNum.Clear();
-			mul.Enabled = true;
+            boxMulRes.Clear();
+            mul.Enabled = true;
             LowLog += "Значения очищены для умножения" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
             lowLevelLog.Text = LowLog;
         }
@@ -361,8 +363,8 @@ namespace TrunoGT
 		{
 			XorNum = boxXOR.Text;
 			XOR.Invoke(sender, e);
-			resBOX.Text = "Результат = " + XorRes;
-			boxXOR.Text = "Исходное число=  " + XorNum;
+			resBOX.Text = ""+XorRes;
+			boxXOR.Text = "" + XorNum;
 			xor.Enabled = false;
 			boxXOR.ReadOnly = true;
 			lowLevelLog.Text = LowLog;

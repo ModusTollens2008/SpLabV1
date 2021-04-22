@@ -18,6 +18,7 @@ namespace TrunoGT.Models
             try
             {
                 value = int.Parse(a);
+                value = _ILow.LowLevelNot(value);
             }
 
             catch (ArgumentNullException)
@@ -35,9 +36,12 @@ namespace TrunoGT.Models
             catch (Exception)
             {
                 LowLog += "Неизвестная ошибка в обработке первого числа!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }           
-            LowLog += "Операция произошла успешно!";
-           return _ILow.LowLevelNot(value);
+            }
+            if (value != 0)
+            {
+                LowLog += "Успейшн!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            }
+            return value;
            
         }
         public int Mul(string a, string b)
