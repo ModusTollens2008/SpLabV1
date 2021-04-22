@@ -107,11 +107,11 @@ namespace BusinessLogic
 					break;
 				default:
 					code = code.Insert(start, "{count++;");
-					start += 9;
+					start += 8;
 					start = code.IndexOf(';', start);
 					if (start == -1)
 						return 0;
-					code = code.Insert(++start, "}");
+					code = code.Insert(++start, " break;}");
 					break;
 			}
 			var provider = new CSharpCodeProvider();
@@ -149,7 +149,7 @@ namespace BusinessLogic
 			int startStruct = code.IndexOf("do");
 			if (startStruct != -1)
 			{
-				//startStruct += 2;
+				startStruct += 2;
 				while (startStruct < code.Length && code[startStruct] == ' ')
 					startStruct++;
 				if ((startStruct < code.Length) && (code[startStruct] != '}'))
