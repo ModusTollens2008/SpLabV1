@@ -42,18 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryNode.cs" />
-    <Compile Include="IModels\IListOperations.cs" />
-    <Compile Include="IModels\IListXMLOperations.cs" />
-    <Compile Include="IModels\IStructureAnalyse.cs" />
-    <Compile Include="IModels\IWorkFile.cs" />
-    <Compile Include="IModels\IWorkWithXml.cs" />
-    <Compile Include="Models\ListOperations.cs" />
-    <Compile Include="Models\StructureAnalyse.cs" />
-    <Compile Include="Models\BinListOperations.cs" />
-    <Compile Include="Models\WorkWithFile.cs" />
+    <Compile Include="Interfaces\IListOperations.cs" />
+    <Compile Include="Interfaces\IListXMLOperations.cs" />
+    <Compile Include="Interfaces\IStructureAnalyse.cs" />
+    <Compile Include="Interfaces\IWorkFile.cs" />
+    <Compile Include="Interfaces\IWorkWithXml.cs" />
+    <Compile Include="Classes\ListOperations.cs" />
+    <Compile Include="Classes\StructureAnalyse.cs" />
+    <Compile Include="Classes\BinListOperations.cs" />
+    <Compile Include="Classes\WorkWithFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DllNode.cs" />
-    <Compile Include="Models\WorkWithXML.cs" />
+    <Compile Include="Classes\WorkWithXML.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

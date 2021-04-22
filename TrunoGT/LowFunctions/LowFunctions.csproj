@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IModels\ILowLevelFunctions.cs" />
-    <Compile Include="Models\LowLevelFunctions.cs" />
+    <Compile Include="Interfaces\ILowLevelFunctions.cs" />
+    <Compile Include="Classes\LowLevelFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
