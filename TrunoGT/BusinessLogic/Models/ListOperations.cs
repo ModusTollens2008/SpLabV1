@@ -30,7 +30,7 @@ namespace BusinessLogic
         }
         public void deleteElement(int index)
         {
-			if (index >= 0 && index <= GetList.Count && GetList != null && GetList.Count != 0)
+			if (index >= 0 && index <= GetList.Count && GetList != null)
 			{
 				mainList.RemoveAt(index);
 			}

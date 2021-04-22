@@ -27,12 +27,6 @@ namespace TrunoGT.Presenters
 		public void Analyze13(object sender, EventArgs e)
 		{
 			_IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();
-			/* int[] a = new int[] { 1, 2, 3 };
-			 foreach (int b in a)
-			 {
-				 Console.WriteLine(b);
-			 }
-			 */
 		}
 	}
 }

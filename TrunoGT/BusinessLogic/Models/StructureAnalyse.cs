@@ -40,9 +40,9 @@ namespace BusinessLogic
                 var provider = new CSharpCodeProvider();
                 var parameters = new CompilerParameters { GenerateInMemory = true };
                 parameters.ReferencedAssemblies.Add("System.dll");
-                try
-                {
-                    var results = provider.CompileAssemblyFromSource(parameters, $@"
+			try
+			{
+				var results = provider.CompileAssemblyFromSource(parameters, $@"
                     using System;
  
                     public static class Checker 
@@ -54,14 +54,16 @@ namespace BusinessLogic
                             return count;
                         }}
                     }}");
-                    var method = results.CompiledAssembly.GetType("Checker").GetMethod("F");
-                    var func = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), null, method);
-                    return func();
-                }
-                catch (FileNotFoundException)
-                {
-                    throw new ArgumentException("Input should be valid C# expression", nameof(code));
-                }
+				var method = results.CompiledAssembly.GetType("Checker").GetMethod("F");
+				var func = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), null, method);
+				return func();
+				
+			}
+
+			catch (FileNotFoundException)
+			{
+				throw new ArgumentException("Input should be valid C# expression", nameof(code));
+			}
             }
 
             private static int IsFitVar10(string code)
@@ -72,17 +74,20 @@ namespace BusinessLogic
                     startStruct += 7;
                     while (startStruct < code.Length && code[startStruct] == ' ')
                         startStruct++;
-                    if ((startStruct < code.Length) && (code[startStruct] != ')'))
-                    {
-                        startStruct = code.IndexOf(')', startStruct);
-                        if (startStruct != -1)
-                        {
-                            startStruct++;
-                        }
-                    }
-                    else
-                        startStruct = -1;
-                }
+				if ((startStruct < code.Length) && (code[startStruct] != ')'))
+				{
+					startStruct = code.IndexOf(')', startStruct);
+					if (startStruct != -1)
+					{
+						startStruct++;
+					}
+				}
+				else
+				{
+					startStruct = -1;
+				}
+		
+			}
                 return startStruct;
             }
 		public int CheckWhileDoStucture(string code)
@@ -114,6 +119,7 @@ namespace BusinessLogic
 			parameters.ReferencedAssemblies.Add("System.dll");
 			try
 			{
+			
 				var results = provider.CompileAssemblyFromSource(parameters, $@"
                     using System;
  
@@ -143,12 +149,12 @@ namespace BusinessLogic
 			int startStruct = code.IndexOf("do");
 			if (startStruct != -1)
 			{
-				startStruct += 2;
+				//startStruct += 2;
 				while (startStruct < code.Length && code[startStruct] == ' ')
 					startStruct++;
 				if ((startStruct < code.Length) && (code[startStruct] != '}'))
 				{
-					startStruct = code.IndexOf('}', startStruct);
+					startStruct = code.IndexOf('{', startStruct);
 					if (startStruct != -1)
 					{
 						startStruct++;
