@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using TrunoGT.IViews;
 using TrunoGT.Presenters;
+using BusinessLogic;
 
 
 namespace TrunoGT
