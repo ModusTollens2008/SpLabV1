@@ -32,7 +32,135 @@ namespace TrunoGT
 		private string lowlog;
         private string filelog;
 
+        public event EventHandler Add;
+        public event EventHandler Delete;
+        public event EventHandler Save;
+        public event EventHandler ReadFromFile;
+        public event EventHandler Edit;
+        public event EventHandler AddDLL;
+        public event EventHandler DeleteDLL;
+        public event EventHandler SaveDLL;
+        public event EventHandler ReadFromFileDLL;
+        public event EventHandler EditDLL;
+        public event EventHandler Analyze10;
+        public event EventHandler Analyze13;
+        public event EventHandler XOR;
+        public event EventHandler Mul;
+        public event EventHandler ClrMul;
+        public event EventHandler ClrXOR;
         private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+
+        public string FilePathDLL
+        {
+            get { return filepathdll; }
+            set { filepathdll = value; }
+        }
+        public string newNameDLL
+        {
+            get { return newnamedll; }
+            set { newnamedll = value; }
+        }
+        public string newVersionDLL
+        {
+            get { return newversiondll; }
+            set { newversiondll = value; }
+        }
+        public string newLastChangeDLL
+        {
+            get { return newlastchangedll; }
+            set { newlastchangedll = value; }
+        }
+        public string FilePath
+        {
+            get { return filepath; }
+            set { filepath = value; }
+        }
+        public int BinIndex
+        {
+            get { return binindex; }
+            set { binindex = value; }
+        }
+        public int DLLIndex
+        {
+            get { return dllindex; }
+            set { dllindex = value; }
+        }
+        public string newFilePath
+        {
+            get { return newfilepath; }
+            set { newfilepath = value; }
+        }
+        public string newCreateDate
+        {
+            get { return newcreatedate; }
+            set { newcreatedate = value; }
+        }
+        public string newSize
+        {
+            get { return newsize; }
+            set { newsize = value; }
+        }
+        public string Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
+        public string CodeGT
+        {
+            get { return codegt; }
+            set { codegt = value; }
+        }
+        public string Result
+        {
+            get { return result; }
+            set { result = value; }
+        }
+        public string FirstNum
+        {
+            get { return firstnum; }
+            set { firstnum = value; }
+        }
+        public string SecondNum
+        {
+            get { return secondnum; }
+            set { secondnum = value; }
+        }
+        public int MulResult
+        {
+            get { return mulresult; }
+            set { mulresult = value; }
+        }
+        public string XorNum
+        {
+            get { return xornum; }
+            set { xornum = value; }
+        }
+        public int XorRes
+        {
+            get { return xorres; }
+            set { xorres = value; }
+        }
+        public string LowLog
+        {
+            get { return lowlog; }
+            set { lowlog = value; }
+        }
+        public string FileLog
+        {
+            get { return filelog; }
+            set { filelog = value; }
+        }
+        public string AnalyseLog
+        {
+            get; set;
+        }
+
+
+
+
+
+        
 
         public Form1()
 		{
@@ -58,124 +186,11 @@ namespace TrunoGT
 			LowLevelPresenter lowLevelPresenter = new LowLevelPresenter(this);
 
 		}
-		public string FilePathDLL
-		{
-			get { return filepathdll; }
-			set { filepathdll = value; }
-		}
-		public string newNameDLL
-		{
-			get { return newnamedll; }
-			set { newnamedll = value; }
-		}
-		public string newVersionDLL
-		{
-			get { return newversiondll; }
-			set { newversiondll = value; }
-		}
-		public string newLastChangeDLL
-		{
-			get { return newlastchangedll; }
-			set { newlastchangedll = value; }
-		}
-		public string FilePath
-		{	get { return filepath; }
-			set { filepath = value; }
-		}
-		public int BinIndex
-		{
-			get { return binindex; }
-			set { binindex = value; }
-		}
-		public int DLLIndex
-		{
-			get { return dllindex; }
-			set { dllindex = value; }
-		}
-		public string newFilePath
-		{
-			get { return newfilepath; }
-			set { newfilepath = value; }
-		}
-		public string newCreateDate
-		{
-			get { return newcreatedate; }
-			set { newcreatedate = value; }
-		}
-		public string newSize
-		{
-			get { return newsize; }
-			set { newsize = value; }
-		}
-		public string Code
-		{	get  {return code; }
-			set { code = value; }
-		}
-		public string CodeGT {
-			get { return codegt; }
-			set { codegt = value; }
-		}
-		public string Result {
-			get { return result; }
-			set { result = value; }
-		}
-		public string FirstNum {
-			get { return firstnum; }
-			set { firstnum = value; }
-		}
-		public string SecondNum {
-			get { return secondnum; }
-			set { secondnum = value; }
-		}
-		public int MulResult
-		{
-			get { return mulresult; }
-			set { mulresult = value; }
-		}
-		public string XorNum
-		{
-			get { return xornum; }
-			set { xornum = value; }
-		}
-		public int XorRes
-		{
-			get { return xorres; }
-			set { xorres = value; }
-		}
-		public string LowLog
-		{
-			get { return lowlog; }
-			set { lowlog = value; }
-		}
-        public string FileLog
-        {
-            get { return filelog; }
-            set { filelog = value; }
-        }
-        public string AnalyseLog
-        {
-            get; set;
-        }
+		
 
 
 
-		public event EventHandler Add;
-		public event EventHandler Delete;
-		public event EventHandler Save;
-		public event EventHandler ReadFromFile;
-		public event EventHandler Edit;
-		public event EventHandler AddDLL;
-		public event EventHandler DeleteDLL;
-		public event EventHandler SaveDLL;
-		public event EventHandler ReadFromFileDLL;
-		public event EventHandler EditDLL;
-		public event EventHandler Analyze10;
-		public event EventHandler Analyze13;
-		public event EventHandler XOR;
-		public event EventHandler Mul;
-
-        public event EventHandler ClrMul;
-        public event EventHandler ClrXOR;
+		
 
 
         void IForm.OutTable(List<BinaryNode> binlist)

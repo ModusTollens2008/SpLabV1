@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrunoGT.IViews;
+using TrunoGT.Models;
 
 namespace TrunoGT.Presenters
 {
@@ -16,6 +17,7 @@ namespace TrunoGT.Presenters
 		private IWorkFile WWFiles;
 		private IWorkWithXml WWXml;
 		private IListXMLOperations dllop;
+        private ModelListOperations IModel;
 		public ListOperationsPresenter(IForm Iform)
 		{
 			_IForm = Iform;
@@ -24,7 +26,6 @@ namespace TrunoGT.Presenters
 			_IForm.Save += SaveToFile;
 			_IForm.ReadFromFile += ReadFromFile;
 			_IForm.Edit += EditNode;
-
 			_IForm.AddDLL += AddDLLNode;
 			_IForm.DeleteDLL += DeleteDLLNode;
 			_IForm.SaveDLL += SaveToFileDLL;
@@ -34,41 +35,23 @@ namespace TrunoGT.Presenters
 			dllop = new ListOperations();
 			WWFiles = new WorkWithFiles();
 			WWXml = new WorkWithXML();
-            _IForm.FileLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            IModel = new ModelListOperations();
         }
 		private void SavingList(object sender,EventArgs e)
 		{
-
-            try { BinListOp.addNewElement(_IForm.FilePath);
-                _IForm.FileLog += "Файл успешно выбран!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "Упс, при выборе бинарника произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
+            IModel.SavingList(_IForm.FilePath);         
+            _IForm.FileLog = IModel.OPLog;
 			_IForm.OutTable(BinListOp.GetList);
-
-            
+   
         }
 		private void DeleteNode(object sender, EventArgs e)
 		{
-			BinListOp.deleteElement(_IForm.BinIndex);           
+            IModel.DeleteNode(_IForm.BinIndex);
+			_IForm.FileLog=IModel.OPLog;          
         }
 		private void SaveToFile(object sender, EventArgs e)
 		{
-            try
-            { WWFiles.WriteBinFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
-                _IForm.FileLog += "Запись сохранена в файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-				WWFiles.WriteToBD(BinListOp.GetList);
-            }
-            catch (System.IO.IOException)
-            {
-                _IForm.FileLog += "ERROR: Произошла ошибка при открытии бинарного файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-           // catch (Exception)
-            {
-             //   _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
+            IModel.SaveToFile(sender,e);
             
         }
 		private void ReadFromFile(object sender, EventArgs e)

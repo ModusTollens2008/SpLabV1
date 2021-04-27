@@ -12,7 +12,6 @@ namespace TrunoGT.Presenters
 	{
 		private IForm _IForm;
         private ModelLowLevel _ILow=new ModelLowLevel();
-
 		public LowLevelPresenter(IForm Iform)
 		{
 			_IForm = Iform;
@@ -20,7 +19,6 @@ namespace TrunoGT.Presenters
 			_IForm.XOR += XOR;
             _IForm.ClrMul += ClrMul;
             _IForm.ClrXOR += ClrXOR;
-
         }
         public void ClrMul(object sender, EventArgs e)
         {
@@ -32,8 +30,6 @@ namespace TrunoGT.Presenters
             _ILow.XORClr();
             _IForm.LowLog = _ILow.LowLog;
         }
-
-
         public void Mul(object sender, EventArgs e)
 		{
             _IForm.MulResult = _ILow.Mul(_IForm.FirstNum, _IForm.SecondNum);
