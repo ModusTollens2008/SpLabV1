@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="IViews\IForm.cs" />
     <Compile Include="Models\ModelAnalyse.cs" />
+    <Compile Include="Models\ModelListOperations.cs" />
     <Compile Include="Models\ModelLowLevel.cs" />
     <Compile Include="Presenters\AnalyzePresenter.cs" />
     <Compile Include="Presenters\ListOperationsPresenter.cs" />
