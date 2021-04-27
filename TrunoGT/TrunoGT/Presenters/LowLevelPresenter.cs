@@ -27,31 +27,9 @@ namespace TrunoGT.Presenters
 		}
 		public void XOR(object sender, EventArgs e)
 		{
-			int a = 0;
-			try
-			{
-				a = int.Parse(_IForm.XorNum);
-			}
-
-			catch (ArgumentNullException)
-			{
-				_IForm.LowLog += "Ошибка! " + "Первое число не было введено" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-			catch (FormatException)
-			{
-				_IForm.LowLog += "Ошибка! Первое число имело неверный формат" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-			catch (OverflowException)
-			{
-				_IForm.LowLog += "Слишком большое первое число!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-			catch (Exception)
-			{
-				_IForm.LowLog += "Неизвестная ошибка в обработке первого числа!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-			//_IForm.XorRes = _ILow.XOR(a);
-			_IForm.LowLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-		}
+            _IForm.XorRes = _ILow.XOR(_IForm.XorNum);
+            _IForm.LowLog = _ILow.LowLog;
+        }
 	}
 
 }
