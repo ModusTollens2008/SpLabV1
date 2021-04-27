@@ -174,7 +174,11 @@ namespace TrunoGT
 		public event EventHandler XOR;
 		public event EventHandler Mul;
 
-		void IForm.OutTable(List<BinaryNode> binlist)
+        public event EventHandler ClrMul;
+        public event EventHandler ClrXOR;
+
+
+        void IForm.OutTable(List<BinaryNode> binlist)
 		{
 
 			for (int i =0;i<binlist.Count;i++)
@@ -349,13 +353,13 @@ namespace TrunoGT
 		private void clr_Click(object sender, EventArgs e)
 		{
 			boxFirstNum.ReadOnly = false;
-			boxSecondNum.ReadOnly = false;
-            boxMulRes.ReadOnly = false;
+			boxSecondNum.ReadOnly = false;           
             boxFirstNum.Clear();
 			boxSecondNum.Clear();
             boxMulRes.Clear();
             mul.Enabled = true;
-            LowLog += "Значения очищены для умножения" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+
+            ClrMul.Invoke(sender, e);           
             lowLevelLog.Text = LowLog;
         }
 
@@ -377,7 +381,7 @@ namespace TrunoGT
 			xor.Enabled = true;
 			boxXOR.Clear();
 			resBOX.Clear();
-            LowLog += "Значения очищены для НЕ" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            ClrXOR.Invoke(sender, e);
             lowLevelLog.Text = LowLog;
         }
 

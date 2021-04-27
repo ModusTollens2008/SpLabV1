@@ -17,8 +17,7 @@ namespace TrunoGT.Presenters
 			_IForm = Iform;
 			_IForm.Analyze10 += Analyze10;
 			_IForm.Analyze13 += Analyze13;
-			_Istr = new ModelAnalyse();
-            _IForm.AnalyseLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			_Istr = new ModelAnalyse();          
         }
 		public void Analyze10(object sender, EventArgs e)
 		{

@@ -18,9 +18,23 @@ namespace TrunoGT.Presenters
 			_IForm = Iform;
 			_IForm.Mul += Mul;
 			_IForm.XOR += XOR;
-            _IForm.LowLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-		}
-		public void Mul(object sender, EventArgs e)
+            _IForm.ClrMul += ClrMul;
+            _IForm.ClrXOR += ClrXOR;
+
+        }
+        public void ClrMul(object sender, EventArgs e)
+        {
+            _ILow.MulClr();
+            _IForm.LowLog = _ILow.LowLog;
+        }
+        public void ClrXOR(object sender, EventArgs e)
+        {
+            _ILow.XORClr();
+            _IForm.LowLog = _ILow.LowLog;
+        }
+
+
+        public void Mul(object sender, EventArgs e)
 		{
             _IForm.MulResult = _ILow.Mul(_IForm.FirstNum, _IForm.SecondNum);
             _IForm.LowLog = _ILow.LowLog;
