@@ -8,10 +8,23 @@ using TrunoGT.Models;
 
 namespace TrunoGT.Presenters
 {
+    /// <summary>
+    /// Презентер аналаза кода
+    /// </summary>
 	class AnalyzePresenter
 	{
+        /// <summary>
+        /// Интерфейс формы
+        /// </summary>
 		private IForm _IForm;
+        /// <summary>
+        /// Экземпляр модели
+        /// </summary>
 		private ModelAnalyse _Istr;
+        /// <summary>
+        /// Инициализация презентера
+        /// </summary>
+        /// <param name="Iform">Экземпляр формы</param>
 		public AnalyzePresenter(IForm Iform)
 		{
 			_IForm = Iform;
@@ -19,12 +32,22 @@ namespace TrunoGT.Presenters
 			_IForm.Analyze13 += Analyze13;
 			_Istr = new ModelAnalyse();          
         }
+        /// <summary>
+        /// Анализ кода для 10 варианта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		public void Analyze10(object sender, EventArgs e)
 		{
            
             _IForm.Result = _Istr.CheckStucture(_IForm.Code).ToString();                        
             _IForm.AnalyseLog = _Istr.AnalyseLog;
         }
+        /// <summary>
+        /// Анализ кода для 13 варианта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		public void Analyze13(object sender, EventArgs e)
 		{
 

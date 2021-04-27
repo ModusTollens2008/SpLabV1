@@ -20,7 +20,7 @@ namespace TrunoGT.Models
         /// сохрание списка
         /// </summary>
         /// <param name="FilePath">Список файлов</param>
-		public void SavingList(string FilePath)
+		public List<BinaryNode> SavingList(string FilePath)
 		{
 
 			try
@@ -32,21 +32,26 @@ namespace TrunoGT.Models
 			{
                 OPLog += "Упс, при выборе бинарника произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			}
-
+            return BinListOp.GetList;
 		}
-		public void DeleteNode(int index)
+		public List<BinaryNode> DeleteNode(int index)
 		{
-		
-			BinListOp.deleteElement(index);
-            OPLog += "Файл успешно удалён!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            try
+            {
+                BinListOp.deleteElement(index);
+                OPLog += "Файл успешно удалён!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            }
+            catch (Exception)
+            {}
+            return BinListOp.GetList;
 		}
-		public void SaveToFile(object sender, EventArgs e)
+		public void SaveToFile()
 		{
 			try
 			{
 				WWFiles.WriteBinFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
                 OPLog += "Запись сохранена в файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-				WWFiles.WriteToBD(BinListOp.GetList);
+				//WWFiles.WriteToBD(BinListOp.GetList);
 			}
 			catch (System.IO.IOException)
 			{
@@ -58,7 +63,7 @@ namespace TrunoGT.Models
 			}
 
 		}
-		public void ReadFromFile(object sender, EventArgs e)
+        public List<BinaryNode> ReadFromFile()
 		{
             OPLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			try
@@ -73,12 +78,28 @@ namespace TrunoGT.Models
 			{
                 OPLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			}
-
+            return BinListOp.GetList;
 		}
-		public void EditNode(int index,string newFilePath,string newSize,string newCreateDate)
+		public List<BinaryNode> EditNode(int index,string newFilePath,string newSize,string newCreateDate)
 		{
-			//сделать проверку параметров 
-			BinListOp.editElement(index, newFilePath, newSize,newCreateDate);
+            int size;
+            DateTime dt;          
+            try {dt= DateTime.Parse(newCreateDate);
+                size = int.Parse(newSize);
+                if (size >= 0)
+                {
+                    BinListOp.editElement(index, newFilePath, newSize, newCreateDate);
+                }
+                else
+                {
+                    OPLog += "Неправильный размер файла" + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                }
+            }
+            catch (Exception)
+            {
+                OPLog += "Неправильная дата или размер файла"+ DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            }			
+            return BinListOp.GetList;
 		}
 
 		public void AddDLLNode(string FilePathDLL)

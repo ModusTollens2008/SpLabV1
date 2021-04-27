@@ -8,12 +8,26 @@ using System.Threading.Tasks;
 
 namespace TrunoGT.Models
 {
+    /// <summary>
+    /// Класс моделей анализа кода
+    /// </summary>
     class ModelAnalyse
     {
+        /// <summary>
+        /// Экземпляр класса анализа кода
+        /// </summary>
         private IStructureAnalyse _Istr =new StructureAnalyse();
+        /// <summary>
+        /// Лог действий
+        /// </summary>
         public string AnalyseLog
         { get; set; }
 
+        /// <summary>
+        /// Модель анализа цикла WhileDo
+        /// </summary>
+        /// <param name="code">Анализируемый код</param>
+        /// <returns>Возвращает была ли хотя бы одна иттерация</returns>
         public int CheckWhileDoStucture(string code)
         {
             AnalyseLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Анализ кода начался!" + "\n";
@@ -45,6 +59,11 @@ namespace TrunoGT.Models
             }
             return a;          
         }
+        /// <summary>
+        /// Модель анализа цикла foreach
+        /// </summary>
+        /// <param name="code">Анализируемый код</param>
+        /// <returns>Возвращает количество иттераций цикла</returns>
         public int CheckStucture(string code)
         {
             AnalyseLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Анализ кода начался!" + "\n";

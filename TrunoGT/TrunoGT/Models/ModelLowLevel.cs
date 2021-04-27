@@ -7,22 +7,40 @@ using System.Threading.Tasks;
 
 namespace TrunoGT.Models
 {
+    /// <summary>
+    /// Модель низкоуровневых функций 
+    /// </summary>
     class ModelLowLevel
     {
-        private LowLevelFunctions _ILow = new LowLevelFunctions();       
+        /// <summary>
+        /// Экземпляр класса низкоуровневых функций
+        /// </summary>
+        private LowLevelFunctions _ILow = new LowLevelFunctions();
+        /// <summary>
+        /// Лог действий
+        /// </summary>
         public string LowLog
         {get;set;}
 
-
+        /// <summary>
+        /// Очистка полей для умножения
+        /// </summary>
         public void MulClr()
         {
             LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Значения для умножения очищены!" + "\n";
         }
-
+        /// <summary>
+        /// Очистка полей для НЕ
+        /// </summary>
         public void XORClr()
         {
             LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Значения для побитового НЕ очищены!" + "\n";
         }
+        /// <summary>
+        /// Модель побитового НЕ
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <returns>Результат</returns>
         public int XOR(string a)
         {
            int value = 0;
@@ -55,6 +73,12 @@ namespace TrunoGT.Models
             return value;
            
         }
+        /// <summary>
+        /// Модель умножения двух чисел
+        /// </summary>
+        /// <param name="a"> Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <returns>Результат умножения</returns>
         public int Mul(string a, string b)
         {
             LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Инициализация умножения!" + "\n";
@@ -108,11 +132,8 @@ namespace TrunoGT.Models
             catch (Exception)
             {
                 LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Неизвестная ошибка в обработке второго числа!"+ "\n";
-            }
-         
-            
+            }       
             return mulres;
-            //return _ILow.LowLevelMultiple(a,b);
         }
 
     }

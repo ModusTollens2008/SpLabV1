@@ -38,44 +38,34 @@ namespace TrunoGT.Presenters
             IModel = new ModelListOperations();
         }
 		private void SavingList(object sender,EventArgs e)
-		{
-            IModel.SavingList(_IForm.FilePath);         
-            _IForm.FileLog = IModel.OPLog;
-			_IForm.OutTable(BinListOp.GetList);
+		{               
+            _IForm.FileLog = IModel.OPLog;          
+			_IForm.OutTable(BinListOp.GetList= IModel.SavingList(_IForm.FilePath));
    
         }
 		private void DeleteNode(object sender, EventArgs e)
 		{
-            IModel.DeleteNode(_IForm.BinIndex);
-			_IForm.FileLog=IModel.OPLog;          
+            BinListOp.GetList=IModel.DeleteNode(_IForm.BinIndex);
+			_IForm.FileLog=IModel.OPLog;
+            
+
+
         }
 		private void SaveToFile(object sender, EventArgs e)
 		{
-            IModel.SaveToFile(sender,e);
+            IModel.SaveToFile();
+            _IForm.FileLog = IModel.OPLog;
             
         }
 		private void ReadFromFile(object sender, EventArgs e)
-		{
-            _IForm.FileLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            try
-            {
-                BinListOp.GetList = WWFiles.ReadFromBin("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
-            }
-            catch (System.IO.IOException)
-            {
-                _IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-
-            _IForm.OutTable(BinListOp.GetList);
-            }
+		{         
+            _IForm.FileLog = IModel.OPLog;
+            _IForm.OutTable(BinListOp.GetList= IModel.ReadFromFile());
+        }
 		private void EditNode(object sender, EventArgs e)
-		{
-			BinListOp.editElement(_IForm.BinIndex,_IForm.newFilePath,_IForm.newSize,_IForm.newCreateDate);
-			_IForm.OutTable(BinListOp.GetList);
+		{			
+			_IForm.OutTable(BinListOp.GetList= IModel.EditNode(_IForm.BinIndex, _IForm.newFilePath, _IForm.newSize, _IForm.newCreateDate));
+            _IForm.FileLog = IModel.OPLog;
 		}
 
 		private void AddDLLNode(object sender, EventArgs e)
