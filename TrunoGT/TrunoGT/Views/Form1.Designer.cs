@@ -30,6 +30,10 @@
 		{
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.thTusk = new System.Windows.Forms.RichTextBox();
+            this.tenTusk = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.boxMulRes = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +64,8 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tusk10Box = new System.Windows.Forms.RichTextBox();
+            this.tusk13Box = new System.Windows.Forms.RichTextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.logBoxAnalyse = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,12 +76,6 @@
             this.text4Analyze10 = new System.Windows.Forms.RichTextBox();
             this.result13Box = new System.Windows.Forms.TextBox();
             this.result10Box = new System.Windows.Forms.TextBox();
-            this.boxMulRes = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.tenTusk = new System.Windows.Forms.RichTextBox();
-            this.thTusk = new System.Windows.Forms.RichTextBox();
-            this.tusk13Box = new System.Windows.Forms.RichTextBox();
-            this.tusk10Box = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -122,6 +122,43 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Анализатор";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // thTusk
+            // 
+            this.thTusk.Location = new System.Drawing.Point(403, 156);
+            this.thTusk.Name = "thTusk";
+            this.thTusk.ReadOnly = true;
+            this.thTusk.Size = new System.Drawing.Size(387, 59);
+            this.thTusk.TabIndex = 17;
+            this.thTusk.Text = "Вариант №13\nЗадание: Вычислить побитовое НЕ\nИсполнитель: Грушин Анатолий\nГруппа: " +
+    "6304";
+            // 
+            // tenTusk
+            // 
+            this.tenTusk.Location = new System.Drawing.Point(403, 26);
+            this.tenTusk.Name = "tenTusk";
+            this.tenTusk.ReadOnly = true;
+            this.tenTusk.Size = new System.Drawing.Size(387, 72);
+            this.tenTusk.TabIndex = 16;
+            this.tenTusk.Text = "Вариант №10\nЗадание: Умножить два целочисленных значения без знака с проверкой пе" +
+    "реполнения\nИсполнитель: Бочкарев Михаил\nГруппа: 6304";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Результат";
+            // 
+            // boxMulRes
+            // 
+            this.boxMulRes.Location = new System.Drawing.Point(92, 78);
+            this.boxMulRes.Name = "boxMulRes";
+            this.boxMulRes.ReadOnly = true;
+            this.boxMulRes.Size = new System.Drawing.Size(157, 20);
+            this.boxMulRes.TabIndex = 14;
             // 
             // label5
             // 
@@ -426,6 +463,26 @@
             this.tabPage3.Text = "Низкоуровневые функции";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // tusk10Box
+            // 
+            this.tusk10Box.Location = new System.Drawing.Point(6, 116);
+            this.tusk10Box.Name = "tusk10Box";
+            this.tusk10Box.ReadOnly = true;
+            this.tusk10Box.Size = new System.Drawing.Size(218, 72);
+            this.tusk10Box.TabIndex = 11;
+            this.tusk10Box.Text = "Цикл-перебора foreach\n(<элемент>in <массив>){<тело цикла>}\nПосчитать сколько раз " +
+    "выполнится цикл\nИсполнитель: Бочкарев Михаил\nГруппа: 6304";
+            // 
+            // tusk13Box
+            // 
+            this.tusk13Box.Location = new System.Drawing.Point(6, 325);
+            this.tusk13Box.Name = "tusk13Box";
+            this.tusk13Box.ReadOnly = true;
+            this.tusk13Box.Size = new System.Drawing.Size(218, 105);
+            this.tusk13Box.TabIndex = 10;
+            this.tusk13Box.Text = "Цикл с постусловием do \n{<тело цикла>}while\n(<условие>)\nОпределить,выполнится ли " +
+    "больше одного раза\nИсполнитель: Грушин Анатолий\nГруппа: 6304";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -512,62 +569,6 @@
             this.result10Box.ReadOnly = true;
             this.result10Box.Size = new System.Drawing.Size(121, 20);
             this.result10Box.TabIndex = 0;
-            // 
-            // boxMulRes
-            // 
-            this.boxMulRes.Location = new System.Drawing.Point(92, 78);
-            this.boxMulRes.Name = "boxMulRes";
-            this.boxMulRes.Size = new System.Drawing.Size(157, 20);
-            this.boxMulRes.TabIndex = 14;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 81);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Результат";
-            // 
-            // tenTusk
-            // 
-            this.tenTusk.Location = new System.Drawing.Point(403, 26);
-            this.tenTusk.Name = "tenTusk";
-            this.tenTusk.ReadOnly = true;
-            this.tenTusk.Size = new System.Drawing.Size(387, 72);
-            this.tenTusk.TabIndex = 16;
-            this.tenTusk.Text = "Вариант №10\nЗадание: Умножить два целочисленных значения без знака с проверкой пе" +
-    "реполнения\nИсполнитель: Бочкарев Михаил\nГруппа: 6304";
-            // 
-            // thTusk
-            // 
-            this.thTusk.Location = new System.Drawing.Point(403, 156);
-            this.thTusk.Name = "thTusk";
-            this.thTusk.ReadOnly = true;
-            this.thTusk.Size = new System.Drawing.Size(387, 59);
-            this.thTusk.TabIndex = 17;
-            this.thTusk.Text = "Вариант №13\nЗадание: Вычислить побитовое НЕ\nИсполнитель: Грушин Анатолий\nГруппа: " +
-    "6304";
-            // 
-            // tusk13Box
-            // 
-            this.tusk13Box.Location = new System.Drawing.Point(6, 325);
-            this.tusk13Box.Name = "tusk13Box";
-            this.tusk13Box.ReadOnly = true;
-            this.tusk13Box.Size = new System.Drawing.Size(218, 105);
-            this.tusk13Box.TabIndex = 10;
-            this.tusk13Box.Text = "Цикл с постусловием do \n{<тело цикла>}while\n(<условие>)\nОпределить,выполнится ли " +
-    "больше одного раза\nИсполнитель: Грушин Анатолий\nГруппа: 6304";
-            // 
-            // tusk10Box
-            // 
-            this.tusk10Box.Location = new System.Drawing.Point(6, 116);
-            this.tusk10Box.Name = "tusk10Box";
-            this.tusk10Box.ReadOnly = true;
-            this.tusk10Box.Size = new System.Drawing.Size(218, 72);
-            this.tusk10Box.TabIndex = 11;
-            this.tusk10Box.Text = "Цикл-перебора foreach\n(<элемент>in <массив>){<тело цикла>}\nПосчитать сколько раз " +
-    "выполнится цикл\nИсполнитель: Бочкарев Михаил\nГруппа: 6304";
             // 
             // Form1
             // 

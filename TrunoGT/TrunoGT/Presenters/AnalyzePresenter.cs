@@ -22,37 +22,15 @@ namespace TrunoGT.Presenters
         }
 		public void Analyze10(object sender, EventArgs e)
 		{
-            int a=0;
-            try
-            {
-                a = _Istr.CheckStucture(_IForm.Code);
-            }
-            catch (Exception)
-            {
-                _IForm.AnalyseLog += "SUNCTION" + a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            if (a >= 0)
-            {
-                _IForm.Result = a.ToString();
-                _IForm.AnalyseLog += "Анализ цикла произошел успешно! Количество иттераций = " +a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            else {
-                _IForm.AnalyseLog += "Неверно введен код для анализа цикла foreach!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-
+           
+            _IForm.Result = _Istr.CheckStucture(_IForm.Code).ToString();                        
+            _IForm.AnalyseLog = _Istr.AnalyseLog;
         }
 		public void Analyze13(object sender, EventArgs e)
 		{
-            int a;
-            a = _Istr.CheckWhileDoStucture(_IForm.CodeGT);
-            if (a >= 0)
-            {
-                _IForm.AnalyseLog += "Анализ цикла do while произошел успешно! Количество иттераций = " + a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                _IForm.Result= a.ToString();
-            }
-            
-                else _IForm.AnalyseLog += "Неверно введен код для анализа цикла do while!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            
+
+            _IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();       
+            _IForm.AnalyseLog = _Istr.AnalyseLog;
             //_IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();
 
 			/* int[] a = new int[] { 1, 2, 3 };
