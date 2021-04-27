@@ -9,6 +9,7 @@ namespace BusinessLogic
     {
 		public void WriteToBD(List<BinaryNode> binlist)
 		{
+			 
 		}
 	
 		public  IEnumerable<BinaryNode> ReadFromBin(string filepath)
