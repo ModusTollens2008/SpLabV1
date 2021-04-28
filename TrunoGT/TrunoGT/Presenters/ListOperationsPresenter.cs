@@ -35,7 +35,6 @@ namespace TrunoGT.Presenters
 			_IForm.SaveDLL += SaveToFileDLL;
 			_IForm.ReadFromFileDLL += ReadFromFileDLL;
 			_IForm.EditDLL += EditDllNode;
-			//_IForm.ReadFromBD += ReadFromBD;
 			BinListOp = new BinListOperations();
 			dllop = new ListOperations();
 			WWFiles = new WorkWithFiles();

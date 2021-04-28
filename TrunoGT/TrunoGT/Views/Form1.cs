@@ -161,12 +161,6 @@ namespace TrunoGT
             get; set;
         }
 
-
-
-
-
-        
-
         public Form1()
 		{
 			InitializeComponent();
@@ -192,12 +186,6 @@ namespace TrunoGT
 
 		}
 		
-
-
-
-		
-
-
         void IForm.OutTable(List<BinaryNode> binlist)
 		{
 
@@ -267,9 +255,11 @@ namespace TrunoGT
 		}
 
 		private void button4_Click(object sender, EventArgs e)
-		{	
+		{
+			ClearRows();
 			ReadFromFile.Invoke(sender, e);
             fileBoxLog.Text = FileLog;
+
         }
 
 		private void button5_Click(object sender, EventArgs e)
@@ -281,7 +271,7 @@ namespace TrunoGT
                 newCreateDate = dataGridView1.Rows[BinIndex].Cells[2].Value.ToString();
                 newSize = dataGridView1.Rows[BinIndex].Cells[3].Value.ToString();
                 Edit.Invoke(sender, e);
-                
+     
             }           
             else MessageBox.Show($"Ошибка при сохранении файла.\n\nError message:Измененный файл не выбран\n\n" +
                     $"Details:При сохранении изменений необходимо выбрать файл\n\n"); 
@@ -323,6 +313,7 @@ namespace TrunoGT
 
 		private void button9_Click(object sender, EventArgs e)
 		{
+			ClearRows();
 			ReadFromFileDLL.Invoke(sender, e);
             fileBoxLog.Text = FileLog;
         }
@@ -409,6 +400,7 @@ namespace TrunoGT
 
 		private void BinFromBD_Click(object sender, EventArgs e)
 		{
+			ClearRows();
 			ReadFromBD.Invoke(sender,e);
 			fileBoxLog.Text = FileLog;
 		}
@@ -427,8 +419,20 @@ namespace TrunoGT
 
 		private void button13_Click(object sender, EventArgs e)
 		{
+			ClearRows();
 			ReadFromBDDLL.Invoke(sender, e);
 			fileBoxLog.Text = FileLog;
+		}
+
+		private void ClearRows()
+		{
+			for (int i = 0; i < dataGridView1.Columns.Count; i++)
+			{
+				for (int j = 0; j < dataGridView1.Rows.Count; j++)
+				{
+					dataGridView1.Rows[j].Cells[i].Value = "";
+				}
+			}
 		}
 	}
 }
