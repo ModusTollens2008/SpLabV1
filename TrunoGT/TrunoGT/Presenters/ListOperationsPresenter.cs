@@ -22,6 +22,7 @@ namespace TrunoGT.Presenters
 			_IForm.Add += SavingList;
 			_IForm.Delete += DeleteNode;
 			_IForm.Save += SaveToFile;
+			_IForm.Save += SaveToBD;
 			_IForm.ReadFromFile += ReadFromFile;
 			_IForm.Edit += EditNode;
 
@@ -30,6 +31,7 @@ namespace TrunoGT.Presenters
 			_IForm.SaveDLL += SaveToFileDLL;
 			_IForm.ReadFromFileDLL += ReadFromFileDLL;
 			_IForm.EditDLL += EditDllNode;
+			_IForm.ReadFromBD += ReadFromBD;
 			BinListOp = new BinListOperations();
 			dllop = new ListOperations();
 			WWFiles = new WorkWithFiles();
@@ -57,7 +59,7 @@ namespace TrunoGT.Presenters
 		private void SaveToFile(object sender, EventArgs e)
 		{
             try
-            { WWFiles.WriteBinFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
+            { WWFiles.WriteBinFile("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
                 _IForm.FileLog += "Запись сохранена в файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 				WWFiles.WriteToBD(BinListOp.GetList);
             }
@@ -71,12 +73,48 @@ namespace TrunoGT.Presenters
             }
             
         }
+		private void SaveToBD(object sender, EventArgs e)
+		{
+			try
+			{
+				WWFiles.WriteToBD(BinListOp.GetList);
+				_IForm.FileLog += "Запись сохранена в BD!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+	
+			}
+			catch (Exception)
+			{
+				_IForm.FileLog += "ERROR: Произошла ошибка при открытии бинарного файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			}
+			// catch (Exception)
+			{
+				//   _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			}
+
+		}
+		private void ReadFromBD(object sender, EventArgs e)
+		{
+			_IForm.FileLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			try
+			{
+				BinListOp.GetList = WWFiles.ReadFromBD().ToList();
+			}
+			catch (System.IO.IOException)
+			{
+				_IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			}
+			catch (Exception)
+			{
+				_IForm.FileLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			}
+
+			_IForm.OutTable(BinListOp.GetList);
+		}
 		private void ReadFromFile(object sender, EventArgs e)
 		{
             _IForm.FileLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
             try
             {
-                BinListOp.GetList = WWFiles.ReadFromBin("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
+                BinListOp.GetList = WWFiles.ReadFromBin("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
             }
             catch (System.IO.IOException)
             {
@@ -88,7 +126,7 @@ namespace TrunoGT.Presenters
             }
 
             _IForm.OutTable(BinListOp.GetList);
-            }
+         }
 		private void EditNode(object sender, EventArgs e)
 		{
 			BinListOp.editElement(_IForm.BinIndex,_IForm.newFilePath,_IForm.newSize,_IForm.newCreateDate);
@@ -114,13 +152,13 @@ namespace TrunoGT.Presenters
 		private void SaveToFileDLL(object sender, EventArgs e)
 		{
             _IForm.FileLog += "Сохраняю DLL" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            WWXml.writeList("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", dllop.GetList);
+            WWXml.writeList("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", dllop.GetList);
             _IForm.FileLog += "Успешно сохранено!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
         }
 		private void ReadFromFileDLL(object sender, EventArgs e)
 		{
             _IForm.FileLog += "Начинаем чтение из файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            try { dllop.GetList = WWXml.readFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList(); }
+            try { dllop.GetList = WWXml.readFile("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList(); }
             catch (System.IO.IOException)
             {
                 _IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";

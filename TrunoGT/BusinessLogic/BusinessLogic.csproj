@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryNode.cs" />
+    <Compile Include="BinNodes.cs" />
     <Compile Include="Interfaces\IListOperations.cs" />
     <Compile Include="Interfaces\IListXMLOperations.cs" />
     <Compile Include="Interfaces\IStructureAnalyse.cs" />

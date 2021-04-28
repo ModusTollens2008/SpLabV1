@@ -2,14 +2,57 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+
 namespace BusinessLogic
 {
 
 	public class WorkWithFiles:IWorkFile
     {
+		BinNodes context = new BinNodes();
 		public void WriteToBD(List<BinaryNode> binlist)
 		{
-			 
+
+			try
+			{
+				context.BinList.RemoveRange(context.BinList.ToList());
+
+
+
+
+
+				context.SaveChanges();
+				for (int i = 0; i < binlist.Count; i++)
+				{
+
+					{
+						context.BinList.Add(binlist[i]);
+						Console.WriteLine(context.BinList.ToList()[i].Filepath);
+					}
+
+				}
+				context.SaveChanges();
+			}
+			catch(InvalidOperationException e)
+			{
+
+			}
+			
+		
+
+		}
+
+		public List<BinaryNode> ReadFromBD()
+		{
+			List<BinaryNode> binlist = new List<BinaryNode>();
+			{
+				try
+				{
+					binlist = context.BinList.ToList();
+				}
+				catch (Exception e) { Console.WriteLine(e); }
+			}
+			return binlist;
 		}
 	
 		public  IEnumerable<BinaryNode> ReadFromBin(string filepath)
@@ -29,16 +72,14 @@ namespace BusinessLogic
 						string BinDate = reader.ReadString();
 						p.Add(new BinaryNode(BinFilepath, BinSize, BinDate));
 					}
-				}
-			
-			
+				}	
 			return p;
 		}
 		public  void WriteBinFile(string filename,List<BinaryNode> binlist)
 		{
 			
 				// создаем объект BinaryWriter
-				using (BinaryWriter writer = new BinaryWriter(File.Open(filename, FileMode.OpenOrCreate)))
+				using (BinaryWriter writer = new BinaryWriter(File.Open(filename, FileMode.Create)))
 				{
 					// записываем в файл значение каждого поля структуры
 					foreach (BinaryNode s in binlist)

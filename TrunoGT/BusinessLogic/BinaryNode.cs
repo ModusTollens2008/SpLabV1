@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,11 +9,12 @@ namespace BusinessLogic
 {
 	public class BinaryNode
 	{
+
 		private string filepath;
 		private string size;
 		private string createdate;
 
-
+		[Key]
 		public string Filepath
 		{
 			get { return filepath; }
@@ -37,6 +39,10 @@ namespace BusinessLogic
 			this.Filepath = filepath;
 			this.Size = size;
 			this.Createdate = createdate;
+		}
+
+		public BinaryNode()
+		{
 		}
 
 	}

@@ -90,5 +90,6 @@ namespace TrunoGT.IViews
 		event EventHandler Analyze13;
 		event EventHandler XOR;
 		event EventHandler Mul;
+		event EventHandler ReadFromBD;
 	}
 }

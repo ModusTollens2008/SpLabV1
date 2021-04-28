@@ -173,6 +173,7 @@ namespace TrunoGT
 		public event EventHandler Analyze13;
 		public event EventHandler XOR;
 		public event EventHandler Mul;
+		public event EventHandler ReadFromBD;
 
 		void IForm.OutTable(List<BinaryNode> binlist)
 		{
@@ -396,5 +397,10 @@ namespace TrunoGT
 			result13Box.Text = Result;
             logBoxAnalyse.Text = AnalyseLog;
         }
+
+		private void button11_Click(object sender, EventArgs e)
+		{
+			ReadFromBD.Invoke(sender,e);
+		}
 	}
 }

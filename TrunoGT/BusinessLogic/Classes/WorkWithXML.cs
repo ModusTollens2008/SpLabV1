@@ -1,12 +1,50 @@
 ﻿using BusinessLogic.IModels;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 namespace BusinessLogic
 {
     public class WorkWithXML:IWorkWithXml
     {
 
-        public  IEnumerable<DllNode> readFile(string fileName)
+		BinNodes context = new BinNodes();
+		public void WriteToBD(List<DllNode> dlllist)
+		{
+			{
+				try
+				{
+					context.DllList.RemoveRange(context.DllList.ToList());
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+				}
+				context.SaveChanges();
+				for (int i = 0; i < dlllist.Count; i++)
+				{
+					context.DllList.Add(dlllist[i]);
+					Console.WriteLine(context.DllList.ToList()[i].Name);
+				}
+				context.SaveChanges();
+			}
+
+		}
+
+		public List<DllNode> ReadFromBD()
+		{
+			List<DllNode> dlllist = new List<DllNode>();
+			{
+				try
+				{
+					dlllist = context.DllList.ToList();
+				}
+				catch (Exception e) { Console.WriteLine(e); }
+			}
+			return dlllist;
+		}
+
+		public  IEnumerable<DllNode> readFile(string fileName)
         {
             List<DllNode> dllList = new List<DllNode>();
             XmlDocument xDoc = new XmlDocument();

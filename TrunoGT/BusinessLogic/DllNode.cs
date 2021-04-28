@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace BusinessLogic
         private string version;
         private string lastchange;
 
-
+		[Key]
         public string Name {
             get { return name; }
             set { name = value; }
@@ -35,6 +36,9 @@ namespace BusinessLogic
             this.version = version;
             this.lastchange = lastchange;
         }
+		public DllNode()
+		{
+		}
 
-    }
+	}
 }
