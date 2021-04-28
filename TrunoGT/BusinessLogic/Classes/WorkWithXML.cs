@@ -4,8 +4,7 @@ using System.Xml;
 namespace BusinessLogic
 {
     public class WorkWithXML:IWorkWithXml
-    {
-
+    {      
         public  IEnumerable<DllNode> readFile(string fileName)
         {
             List<DllNode> dllList = new List<DllNode>();
@@ -46,27 +45,20 @@ namespace BusinessLogic
 
 
         public static void writeNodeFile(string fileName, DllNode dllNode)
-        {
+        {          
             XmlDocument xDoc = new XmlDocument();
             xDoc.Load(fileName);
             XmlElement xRoot = xDoc.DocumentElement;
-
             XmlElement xdll = xDoc.CreateElement("dll");
-
             XmlAttribute xname = xDoc.CreateAttribute("name");
-
             XmlElement xversion = xDoc.CreateElement("version");
             XmlElement xchangedate = xDoc.CreateElement("changedate");
-
             XmlText xTextName = xDoc.CreateTextNode(dllNode.Name);
             XmlText xTextVersion = xDoc.CreateTextNode(dllNode.Vers);
             XmlText xTextChangeDate = xDoc.CreateTextNode(dllNode.Lastchange);
-
             xname.AppendChild(xTextName);
-
             xversion.AppendChild(xTextVersion);
             xchangedate.AppendChild(xTextChangeDate);
-
             xdll.Attributes.Append(xname);
             xdll.AppendChild(xversion);
             xdll.AppendChild(xchangedate);
@@ -75,6 +67,7 @@ namespace BusinessLogic
         }
         public void writeList(string fileName, List<DllNode> dllList)
         {
+            deleteXML(fileName);
             foreach (DllNode dllNode in dllList)
             {
                 writeNodeFile(fileName, dllNode);

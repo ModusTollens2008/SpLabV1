@@ -102,7 +102,7 @@ namespace TrunoGT.Models
             return BinListOp.GetList;
 		}
 
-		public void AddDLLNode(string FilePathDLL)
+		public List<DllNode> AddDLLNode(string FilePathDLL)
 		{
 			try
 			{
@@ -113,19 +113,22 @@ namespace TrunoGT.Models
 			{
                 OPLog += "Упс, при выборе dll произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			}
+            return dllop.GetList;
 		}
 
-		public void DeleteDLLNode(int index)
+		public List<DllNode> DeleteDLLNode(int index)
 		{
 			dllop.deleteElement(index);
+            return dllop.GetList;
 		}
-		public void SaveToFileDLL(object sender, EventArgs e)
+		public List<DllNode> SaveToFileDLL()
 		{
             OPLog += "Сохраняю DLL" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			WWXml.writeList("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", dllop.GetList);
+			WWXml.writeList("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml",dllop.GetList);
             OPLog += "Успешно сохранено!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            return dllop.GetList;
 		}
-		public void ReadFromFileDLL()
+		public List<DllNode> ReadFromFileDLL()
 		{
             OPLog += "Начинаем чтение из файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			try { dllop.GetList = WWXml.readFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList(); }
@@ -139,12 +142,14 @@ namespace TrunoGT.Models
 			}
 
             OPLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            return dllop.GetList;
 		}
-		public void EditDllNode(int Index, string newNameDLL, string newVersionDLL,string newLastChangeDLL)
+		public List<DllNode> EditDllNode(int Index, string newNameDLL, string newVersionDLL,string newLastChangeDLL)
 		{
             OPLog += "Изменяем файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			dllop.editElement(Index, newNameDLL,newVersionDLL,newLastChangeDLL);
             OPLog += "Изменения произошли успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            return dllop.GetList;
 		}
 
 	}

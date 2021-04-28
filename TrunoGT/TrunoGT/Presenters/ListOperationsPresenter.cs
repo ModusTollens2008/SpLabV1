@@ -68,49 +68,33 @@ namespace TrunoGT.Presenters
             _IForm.FileLog = IModel.OPLog;
 		}
 
+
+
 		private void AddDLLNode(object sender, EventArgs e)
 		{
-            try { dllop.addNewElement(_IForm.FilePathDLL);
-                _IForm.FileLog += "Файл успешно выбран!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "Упс, при выборе dll произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            _IForm.OutTableDLL(dllop.GetList);
-		}
+            _IForm.OutTableDLL(dllop.GetList=IModel.AddDLLNode(_IForm.FilePathDLL));
+            _IForm.FileLog = IModel.OPLog;
+        }
 
 		private void DeleteDLLNode(object sender, EventArgs e)
 		{
-			dllop.deleteElement(_IForm.DLLIndex);
-		}
+            dllop.GetList = IModel.DeleteDLLNode(_IForm.DLLIndex);
+            _IForm.FileLog = IModel.OPLog;
+        }
 		private void SaveToFileDLL(object sender, EventArgs e)
 		{
-            _IForm.FileLog += "Сохраняю DLL" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            WWXml.writeList("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", dllop.GetList);
-            _IForm.FileLog += "Успешно сохранено!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            dllop.GetList=IModel.SaveToFileDLL();
+            _IForm.FileLog = IModel.OPLog;           
         }
 		private void ReadFromFileDLL(object sender, EventArgs e)
-		{
-            _IForm.FileLog += "Начинаем чтение из файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            try { dllop.GetList = WWXml.readFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList(); }
-            catch (System.IO.IOException)
-            {
-                _IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            _IForm.OutTableDLL(dllop.GetList);
-            _IForm.FileLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+		{           
+            _IForm.OutTableDLL(dllop.GetList=IModel.ReadFromFileDLL());
+            _IForm.FileLog = IModel.OPLog;
         }
 		private void EditDllNode(object sender, EventArgs e)
-		{
-            _IForm.FileLog += "Изменяем файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            dllop.editElement(_IForm.DLLIndex,_IForm.newNameDLL, _IForm.newVersionDLL, _IForm.newLastChangeDLL);
-			_IForm.OutTableDLL(dllop.GetList);
-            _IForm.FileLog += "Изменения произошли успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+		{            
+			_IForm.OutTableDLL(dllop.GetList= IModel.EditDllNode(_IForm.DLLIndex, _IForm.newNameDLL, _IForm.newVersionDLL, _IForm.newLastChangeDLL));
+            _IForm.FileLog = IModel.OPLog;
         }
 
 	}

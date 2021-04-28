@@ -1,23 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <dlls>
-  <dll name="Новый текстовый документ.dll">
+  <dll name="dva.txt">
     <version>1</version>
-    <changedate>22.04.2021 9:43:56</changedate>
+    <changedate>27.04.2021 21:34:54</changedate>
   </dll>
-  <dll name="Новый текстовый документ.dll">
+  <dll name="odin.txt">
     <version>1</version>
-    <changedate>22.04.2021 9:43:56</changedate>
-  </dll>
-  <dll name="Новый текстовый документ.dll">
-    <version>1</version>
-    <changedate>22.04.2021 9:43:56</changedate>
-  </dll>
-  <dll name="Новый текстовый документ.dll">
-    <version>1</version>
-    <changedate>22.04.2021 9:43:56</changedate>
-  </dll>
-  <dll name="Новый текстовый документ.dll">
-    <version>1</version>
-    <changedate>22.04.2021 9:43:56</changedate>
+    <changedate>27.04.2021 21:34:46</changedate>
   </dll>
 </dlls>
