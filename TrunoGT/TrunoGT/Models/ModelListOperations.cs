@@ -26,23 +26,29 @@ namespace TrunoGT.Models
 			try
 			{
 				BinListOp.addNewElement(FilePath);
-                OPLog += "Файл успешно выбран!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Файл успешно выбран!" + "\n";
 			}
 			catch (Exception)
 			{
-                OPLog += "Упс, при выборе бинарника произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog +=DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Упс, при выборе бинарника произошла ошибка!" + "\n";
 			}
             return BinListOp.GetList;
 		}
 		public List<BinaryNode> DeleteNode(int index)
 		{
-            try
+           
             {
-                BinListOp.deleteElement(index);
-                OPLog += "Файл успешно удалён!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {}
+                try
+                {
+
+                    BinListOp.deleteElement(index);
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Файл успешно удалён!" + "\n";
+                }
+                catch (Exception)
+                {
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Удаляемый файл не выбран!" + "\n";
+                }
+            }          
             return BinListOp.GetList;
 		}
 		public void SaveToFile()
@@ -50,33 +56,33 @@ namespace TrunoGT.Models
 			try
 			{
 				WWFiles.WriteBinFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
-                OPLog += "Запись сохранена в файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ")+ DateTime.Now.ToString("HH:mm:ss ") +"Запись сохранена в файл!"+ "\n";
 				//WWFiles.WriteToBD(BinListOp.GetList);
 			}
 			catch (System.IO.IOException)
 			{
-                OPLog += "ERROR: Произошла ошибка при открытии бинарного файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Произошла ошибка при открытии бинарного файла!" + "\n";
 			}
-			// catch (Exception)
+			catch (Exception)
 			{
-				//   _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+				  OPLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
 			}
 
 		}
         public List<BinaryNode> ReadFromFile()
 		{
-            OPLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            OPLog += DateTime.Now.ToString("dd.MM.yyyy ")  + DateTime.Now.ToString("HH:mm:ss ") + "Открываем файл для чтения!" + "\n";
 			try
 			{
 				BinListOp.GetList = WWFiles.ReadFromBin("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
 			}
 			catch (System.IO.IOException)
 			{
-                OPLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка при открытии файла!"+ "\n";
 			}
 			catch (Exception)
 			{
-                OPLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ")  + DateTime.Now.ToString("HH:mm:ss ") + "Упс! При открытии файла что-то пошло не так!" + "\n";
 			}
             return BinListOp.GetList;
 		}
@@ -88,16 +94,18 @@ namespace TrunoGT.Models
                 size = int.Parse(newSize);
                 if (size >= 0)
                 {
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Начинаем изменение файла!" + "\n";
                     BinListOp.editElement(index, newFilePath, newSize, newCreateDate);
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно изменено!" + "\n";
                 }
                 else
                 {
-                    OPLog += "Неправильный размер файла" + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                    OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ")  + DateTime.Now.ToString("HH:mm:ss ") + "Неправильный размер файла"+"\n";
                 }
             }
             catch (Exception)
             {
-                OPLog += "Неправильная дата или размер файла"+ DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Неправильная дата или размер файла" + "\n";
             }			
             return BinListOp.GetList;
 		}
@@ -106,49 +114,87 @@ namespace TrunoGT.Models
 		{
 			try
 			{
-				dllop.addNewElement(FilePathDLL);
-                OPLog += "Файл успешно выбран!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                if (FilePathDLL.IndexOf(".dll") < 0)
+                {
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Выбранный файл не является файлом с раширением .dll" + "\n";
+                    return dllop.GetList;
+                }
+                dllop.addNewElement(FilePathDLL);
+                OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Файл успешно выбран!" + "\n";
 			}
 			catch (Exception)
 			{
-                OPLog += "Упс, при выборе dll произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Упс, при выборе dll произошла ошибка!" + "\n";
 			}
             return dllop.GetList;
 		}
 
 		public List<DllNode> DeleteDLLNode(int index)
 		{
-			dllop.deleteElement(index);
+            try
+            {
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Начинаем удаление файла!" + "\n";
+                dllop.deleteElement(index);
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Файл удален!" + "\n";
+            }
+            catch (Exception)
+            {
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Удаляемый файл не выбран" + "\n";
+            }
             return dllop.GetList;
 		}
 		public List<DllNode> SaveToFileDLL()
 		{
-            OPLog += "Сохраняю DLL" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            
+            OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Сохраняю DLL" + "\n";
 			WWXml.writeList("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml",dllop.GetList);
-            OPLog += "Успешно сохранено!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!"+ "\n";
             return dllop.GetList;
 		}
 		public List<DllNode> ReadFromFileDLL()
 		{
-            OPLog += "Начинаем чтение из файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            OPLog +=DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Начинаем чтение из файла!"+ "\n";
 			try { dllop.GetList = WWXml.readFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList(); }
 			catch (System.IO.IOException)
 			{
-                OPLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ")+ DateTime.Now.ToString("HH:mm:ss ") + "Ошибка при открытии файла!"+"\n";
 			}
 			catch (Exception)
 			{
-                OPLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Упс! При открытии файла что-то пошло не так!" + "\n";
 			}
 
-            OPLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            OPLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Операция произошла успешно!" + "\n";
             return dllop.GetList;
 		}
 		public List<DllNode> EditDllNode(int Index, string newNameDLL, string newVersionDLL,string newLastChangeDLL)
 		{
-            OPLog += "Изменяем файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			dllop.editElement(Index, newNameDLL,newVersionDLL,newLastChangeDLL);
-            OPLog += "Изменения произошли успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Изменяем файл!"+"\n";
+            DateTime dt = new DateTime();
+            int version = 0;
+            try
+            {
+                if (newNameDLL.IndexOf(".dll") < 0)
+                {
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Выбранный файл не является файлом с раширением .dll" + "\n";
+                    return dllop.GetList;
+                }
+                
+                dt = DateTime.Parse(newLastChangeDLL);
+                version = int.Parse(newVersionDLL);
+                if (version < 0)
+                {
+                    OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Неправильная версия файла" + "\n";
+                    return dllop.GetList;                  
+                }
+                dllop.editElement(Index, newNameDLL, newVersionDLL, newLastChangeDLL);
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Изменения произошли успешно!" + "\n";
+            }
+            catch (Exception)
+            {
+                OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Неправильная дата или версия файла" + "\n";
+            }
+
             return dllop.GetList;
 		}
 

@@ -33,7 +33,7 @@ namespace BusinessLogic
 		}
 		public void deleteElement(int index)
 		{
-			if (index >= 0 &&index<=BinFiles.Count&& BinFiles != null&&BinFiles.Count!=0)
+			if (index >= 0 &&index<=BinFiles.Count&& BinFiles != null)
 			{
 				BinFiles.RemoveAt(index);
 			}

@@ -38,10 +38,10 @@ namespace TrunoGT.Presenters
             IModel = new ModelListOperations();
         }
 		private void SavingList(object sender,EventArgs e)
-		{               
-            _IForm.FileLog = IModel.OPLog;          
+		{                             
 			_IForm.OutTable(BinListOp.GetList= IModel.SavingList(_IForm.FilePath));
-   
+            _IForm.FileLog = IModel.OPLog;
+
         }
 		private void DeleteNode(object sender, EventArgs e)
 		{
@@ -58,9 +58,9 @@ namespace TrunoGT.Presenters
             
         }
 		private void ReadFromFile(object sender, EventArgs e)
-		{         
-            _IForm.FileLog = IModel.OPLog;
+		{          
             _IForm.OutTable(BinListOp.GetList= IModel.ReadFromFile());
+            _IForm.FileLog = IModel.OPLog;
         }
 		private void EditNode(object sender, EventArgs e)
 		{			

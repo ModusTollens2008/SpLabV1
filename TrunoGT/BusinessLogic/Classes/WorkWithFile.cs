@@ -38,7 +38,7 @@ namespace BusinessLogic
 		{
 			
 				// создаем объект BinaryWriter
-				using (BinaryWriter writer = new BinaryWriter(File.Open(filename, FileMode.OpenOrCreate)))
+				using (BinaryWriter writer = new BinaryWriter(File.Open(filename, FileMode.Create)))
 				{
 					// записываем в файл значение каждого поля структуры
 					foreach (BinaryNode s in binlist)

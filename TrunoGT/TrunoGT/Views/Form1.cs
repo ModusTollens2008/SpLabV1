@@ -268,25 +268,18 @@ namespace TrunoGT
         }
 
 		private void button5_Click(object sender, EventArgs e)
-		{
-            try
+		{         
+           BinIndex = dataGridView1.CurrentRow.Index;
+            if (dataGridView1.Rows[BinIndex].Cells[1].Value != null)
             {
-                BinIndex = dataGridView1.CurrentRow.Index;
                 newFilePath = dataGridView1.Rows[BinIndex].Cells[1].Value.ToString();
                 newCreateDate = dataGridView1.Rows[BinIndex].Cells[2].Value.ToString();
                 newSize = dataGridView1.Rows[BinIndex].Cells[3].Value.ToString();
                 Edit.Invoke(sender, e);
-            }
-            catch (NullReferenceException)
-            {
-                FileLog += "ERROR: Выберите файл для редактирования!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
-            catch (Exception)
-            {
-                FileLog += "ERROR: При сохранении произошла неизвестная ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
+                
+            }           
+            else MessageBox.Show($"Ошибка при сохранении файла.\n\nError message:Измененный файл не выбран\n\n" +
+                    $"Details:При сохранении изменений необходимо выбрать файл\n\n"); 
             fileBoxLog.Text = FileLog;
         }
 
@@ -331,24 +324,16 @@ namespace TrunoGT
 
 		private void button10_Click(object sender, EventArgs e)
 		{
-            try
+               DLLIndex = dataGridView2.CurrentRow.Index;
+            if (dataGridView2.Rows[DLLIndex].Cells[1].Value != null)
             {
-                DLLIndex = dataGridView2.CurrentRow.Index;
                 newNameDLL = dataGridView2.Rows[DLLIndex].Cells[1].Value.ToString();
                 newVersionDLL = dataGridView2.Rows[DLLIndex].Cells[2].Value.ToString();
                 newLastChangeDLL = dataGridView2.Rows[DLLIndex].Cells[3].Value.ToString();
                 EditDLL.Invoke(sender, e);
             }
-            catch (NullReferenceException)
-            {
-                FileLog += "ERROR: Выберите файл для редактирования!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
-            catch (Exception)
-            {
-                FileLog += "ERROR: При сохранении произошла неизвестная ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
+            else MessageBox.Show($"Ошибка при сохранении изменений.\n\nError message:Измененный файл не выбран\n\n" +
+                    $"Details:При сохранении изменений необходимо выбрать файл\n\n");
             fileBoxLog.Text = FileLog;
         }
 
