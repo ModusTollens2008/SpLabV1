@@ -10,5 +10,7 @@ namespace BusinessLogic.IModels
 	{
 		IEnumerable<DllNode> readFile(string fileName);
 		void writeList(string fileName, List<DllNode> dllList);
+		void WriteToBD(List<DllNode> dlllist);
+		List<DllNode> ReadFromBD();
 	}
 }

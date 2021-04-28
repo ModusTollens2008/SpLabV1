@@ -24,7 +24,10 @@ namespace TrunoGT.Presenters
 			_IForm.Add += SavingList;
 			_IForm.Delete += DeleteNode;
 			_IForm.Save += SaveToFile;
-			_IForm.Save += SaveToBD;
+			_IForm.ReadFromBD += ReadFromBD;
+			_IForm.WriteToBD += WriteToBD;
+			_IForm.ReadFromBDDLL += ReadFromBDDLL;
+			_IForm.WriteToBDDLL += WriteToBDDLL;
 			_IForm.ReadFromFile += ReadFromFile;
 			_IForm.Edit += EditNode;
 			_IForm.AddDLL += AddDLLNode;
@@ -32,7 +35,7 @@ namespace TrunoGT.Presenters
 			_IForm.SaveDLL += SaveToFileDLL;
 			_IForm.ReadFromFileDLL += ReadFromFileDLL;
 			_IForm.EditDLL += EditDllNode;
-			_IForm.ReadFromBD += ReadFromBD;
+			//_IForm.ReadFromBD += ReadFromBD;
 			BinListOp = new BinListOperations();
 			dllop = new ListOperations();
 			WWFiles = new WorkWithFiles();
@@ -98,6 +101,27 @@ namespace TrunoGT.Presenters
 			_IForm.OutTableDLL(dllop.GetList= IModel.EditDllNode(_IForm.DLLIndex, _IForm.newNameDLL, _IForm.newVersionDLL, _IForm.newLastChangeDLL));
             _IForm.FileLog = IModel.OPLog;
         }
+		private void ReadFromBD(object sender, EventArgs e)
+		{
+			_IForm.OutTable(BinListOp.GetList = IModel.ReadFromBD());
+			_IForm.FileLog = IModel.OPLog;
+		}
+		private void WriteToBD(object sender, EventArgs e)
+		{
+			_IForm.OutTable(BinListOp.GetList = IModel.WriteToBD());
+			_IForm.FileLog = IModel.OPLog;
+		}
+
+		private void ReadFromBDDLL(object sender, EventArgs e)
+		{
+			_IForm.OutTableDLL(dllop.GetList = IModel.ReadFromBDDLL());
+			_IForm.FileLog = IModel.OPLog;
+		}
+		private void WriteToBDDLL(object sender, EventArgs e)
+		{
+			_IForm.OutTableDLL(dllop.GetList = IModel.WriteToBDDLL());
+			_IForm.FileLog = IModel.OPLog;
+		}
 
 	}
 }

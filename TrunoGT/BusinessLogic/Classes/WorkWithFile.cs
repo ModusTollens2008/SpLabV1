@@ -12,33 +12,13 @@ namespace BusinessLogic
 		BinNodes context = new BinNodes();
 		public void WriteToBD(List<BinaryNode> binlist)
 		{
-
-			try
+			context.BinList.RemoveRange(context.BinList.ToList());
+			context.SaveChanges();
+			for (int i = 0; i < binlist.Count; i++)
 			{
-				context.BinList.RemoveRange(context.BinList.ToList());
-
-
-
-
-
-				context.SaveChanges();
-				for (int i = 0; i < binlist.Count; i++)
-				{
-
-					{
-						context.BinList.Add(binlist[i]);
-						Console.WriteLine(context.BinList.ToList()[i].Filepath);
-					}
-
-				}
-				context.SaveChanges();
+				context.BinList.Add(binlist[i]);
 			}
-			catch(InvalidOperationException e)
-			{
-
-			}
-			
-		
+			context.SaveChanges();	
 
 		}
 

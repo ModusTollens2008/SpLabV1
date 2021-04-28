@@ -48,7 +48,12 @@ namespace TrunoGT
         public event EventHandler Mul;
         public event EventHandler ClrMul;
         public event EventHandler ClrXOR;
-        private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+		public event EventHandler ReadFromBD;
+		public event EventHandler WriteToBD;
+		public event EventHandler ReadFromBDDLL;
+		public event EventHandler WriteToBDDLL;
+
+		private OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
 
         public string FilePathDLL
@@ -401,9 +406,29 @@ namespace TrunoGT
             logBoxAnalyse.Text = AnalyseLog;
         }
 
-		private void button11_Click(object sender, EventArgs e)
+
+		private void BinFromBD_Click(object sender, EventArgs e)
 		{
 			ReadFromBD.Invoke(sender,e);
+			fileBoxLog.Text = FileLog;
+		}
+
+		private void BinToBD_Click(object sender, EventArgs e)
+		{
+			WriteToBD.Invoke(sender, e);
+			fileBoxLog.Text = FileLog;
+		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			WriteToBDDLL.Invoke(sender, e);
+			fileBoxLog.Text = FileLog;
+		}
+
+		private void button13_Click(object sender, EventArgs e)
+		{
+			ReadFromBDDLL.Invoke(sender, e);
+			fileBoxLog.Text = FileLog;
 		}
 	}
 }

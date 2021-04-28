@@ -8,7 +8,7 @@ namespace BusinessLogic
     public class WorkWithXML:IWorkWithXml
     {
 
-		BinNodes context = new BinNodes();
+		XMLNodes context = new XMLNodes();
 		public void WriteToBD(List<DllNode> dlllist)
 		{
 			{
@@ -20,11 +20,10 @@ namespace BusinessLogic
 				{
 					Console.WriteLine(ex);
 				}
-				context.SaveChanges();
-				for (int i = 0; i < dlllist.Count; i++)
+						context.SaveChanges();
+				for (int i = 0; i<dlllist.Count; i++)
 				{
 					context.DllList.Add(dlllist[i]);
-					Console.WriteLine(context.DllList.ToList()[i].Name);
 				}
 				context.SaveChanges();
 			}

@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DllNode.cs" />
     <Compile Include="Classes\WorkWithXML.cs" />
+    <Compile Include="XMLNodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

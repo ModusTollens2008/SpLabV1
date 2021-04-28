@@ -198,5 +198,65 @@ namespace TrunoGT.Models
             return dllop.GetList;
 		}
 
+		public List<BinaryNode> WriteToBD()
+		{
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Сохраняю в БД" + "\n";
+			//try
+			{
+				WWFiles.WriteToBD(BinListOp.GetList);
+			}
+			//catch (InvalidOperationException e)
+			{
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Что-то пошло не так, возможно есть повторяющиеся записи" + "\n";
+			}
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!" + "\n";
+			return BinListOp.GetList;
+		}
+
+		public List<BinaryNode> ReadFromBD()
+		{
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Загрузка из БД" + "\n";
+			try
+			{
+				BinListOp.GetList = WWFiles.ReadFromBD();
+			}
+			catch (InvalidOperationException e)
+			{
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка при загрузке из БД" + "\n";
+			}
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно загружено!" + "\n";
+			return BinListOp.GetList;
+		}
+
+		public List<DllNode> WriteToBDDLL()
+		{
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Сохраняю в БД" + "\n";
+			try
+			{
+				WWXml.WriteToBD(dllop.GetList);
+			}
+			catch (InvalidOperationException e)
+			{
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Что-то пошло не так, возможно есть повторяющиеся записи" + "\n";
+			}
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!" + "\n";
+			return dllop.GetList;
+		}
+
+		public List<DllNode> ReadFromBDDLL()
+		{
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Загрузка из БД" + "\n";
+			try
+			{
+				dllop.GetList = WWXml.ReadFromBD();
+			}
+			catch (InvalidOperationException e)
+			{
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка при загрузке из БД" + "\n";
+			}
+			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно загружено!" + "\n";
+			return dllop.GetList;
+		}
+
 	}
 }

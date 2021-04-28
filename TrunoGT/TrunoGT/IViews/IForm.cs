@@ -210,5 +210,9 @@ namespace TrunoGT.IViews
         /// Очистка полей для побитового НЕ
         /// </summary>
         event EventHandler ClrXOR;
-    }
+		event EventHandler ReadFromBD;
+		event EventHandler WriteToBD;
+		event EventHandler ReadFromBDDLL;
+		event EventHandler WriteToBDDLL;
+	}
 }
