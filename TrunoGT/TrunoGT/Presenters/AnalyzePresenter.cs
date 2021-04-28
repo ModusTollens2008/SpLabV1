@@ -8,51 +8,51 @@ using TrunoGT.Models;
 
 namespace TrunoGT.Presenters
 {
+    /// <summary>
+    /// Презентер аналаза кода
+    /// </summary>
 	class AnalyzePresenter
 	{
+        /// <summary>
+        /// Интерфейс формы
+        /// </summary>
 		private IForm _IForm;
+        /// <summary>
+        /// Экземпляр модели
+        /// </summary>
 		private ModelAnalyse _Istr;
+        /// <summary>
+        /// Инициализация презентера
+        /// </summary>
+        /// <param name="Iform">Экземпляр формы</param>
 		public AnalyzePresenter(IForm Iform)
 		{
 			_IForm = Iform;
 			_IForm.Analyze10 += Analyze10;
 			_IForm.Analyze13 += Analyze13;
-			_Istr = new ModelAnalyse();
-            _IForm.AnalyseLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+			_Istr = new ModelAnalyse();          
         }
+        /// <summary>
+        /// Анализ кода для 10 варианта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		public void Analyze10(object sender, EventArgs e)
 		{
-            int a=0;
-            try
-            {
-                a = _Istr.CheckStucture(_IForm.Code);
-            }
-            catch (Exception)
-            {
-                _IForm.AnalyseLog += "SUNCTION" + a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            if (a >= 0)
-            {
-                _IForm.Result = a.ToString();
-                _IForm.AnalyseLog += "Анализ цикла произошел успешно! Количество иттераций = " +a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            else {
-                _IForm.AnalyseLog += "Неверно введен код для анализа цикла foreach!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-
+           
+            _IForm.Result = _Istr.CheckStucture(_IForm.Code).ToString();                        
+            _IForm.AnalyseLog = _Istr.AnalyseLog;
         }
+        /// <summary>
+        /// Анализ кода для 13 варианта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		public void Analyze13(object sender, EventArgs e)
 		{
-            int a;
-            a = _Istr.CheckWhileDoStucture(_IForm.CodeGT);
-            if (a >= 0)
-            {
-                _IForm.AnalyseLog += "Анализ цикла do while произошел успешно! Количество иттераций = " + a + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                _IForm.Result= a.ToString();
-            }
-            
-                else _IForm.AnalyseLog += "Неверно введен код для анализа цикла do while!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            
+
+            _IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();       
+            _IForm.AnalyseLog = _Istr.AnalyseLog;
             //_IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();
 
 			/* int[] a = new int[] { 1, 2, 3 };

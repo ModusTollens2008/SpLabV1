@@ -32,7 +32,135 @@ namespace TrunoGT
 		private string lowlog;
         private string filelog;
 
+        public event EventHandler Add;
+        public event EventHandler Delete;
+        public event EventHandler Save;
+        public event EventHandler ReadFromFile;
+        public event EventHandler Edit;
+        public event EventHandler AddDLL;
+        public event EventHandler DeleteDLL;
+        public event EventHandler SaveDLL;
+        public event EventHandler ReadFromFileDLL;
+        public event EventHandler EditDLL;
+        public event EventHandler Analyze10;
+        public event EventHandler Analyze13;
+        public event EventHandler XOR;
+        public event EventHandler Mul;
+        public event EventHandler ClrMul;
+        public event EventHandler ClrXOR;
         private OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+
+        public string FilePathDLL
+        {
+            get { return filepathdll; }
+            set { filepathdll = value; }
+        }
+        public string newNameDLL
+        {
+            get { return newnamedll; }
+            set { newnamedll = value; }
+        }
+        public string newVersionDLL
+        {
+            get { return newversiondll; }
+            set { newversiondll = value; }
+        }
+        public string newLastChangeDLL
+        {
+            get { return newlastchangedll; }
+            set { newlastchangedll = value; }
+        }
+        public string FilePath
+        {
+            get { return filepath; }
+            set { filepath = value; }
+        }
+        public int BinIndex
+        {
+            get { return binindex; }
+            set { binindex = value; }
+        }
+        public int DLLIndex
+        {
+            get { return dllindex; }
+            set { dllindex = value; }
+        }
+        public string newFilePath
+        {
+            get { return newfilepath; }
+            set { newfilepath = value; }
+        }
+        public string newCreateDate
+        {
+            get { return newcreatedate; }
+            set { newcreatedate = value; }
+        }
+        public string newSize
+        {
+            get { return newsize; }
+            set { newsize = value; }
+        }
+        public string Code
+        {
+            get { return code; }
+            set { code = value; }
+        }
+        public string CodeGT
+        {
+            get { return codegt; }
+            set { codegt = value; }
+        }
+        public string Result
+        {
+            get { return result; }
+            set { result = value; }
+        }
+        public string FirstNum
+        {
+            get { return firstnum; }
+            set { firstnum = value; }
+        }
+        public string SecondNum
+        {
+            get { return secondnum; }
+            set { secondnum = value; }
+        }
+        public int MulResult
+        {
+            get { return mulresult; }
+            set { mulresult = value; }
+        }
+        public string XorNum
+        {
+            get { return xornum; }
+            set { xornum = value; }
+        }
+        public int XorRes
+        {
+            get { return xorres; }
+            set { xorres = value; }
+        }
+        public string LowLog
+        {
+            get { return lowlog; }
+            set { lowlog = value; }
+        }
+        public string FileLog
+        {
+            get { return filelog; }
+            set { filelog = value; }
+        }
+        public string AnalyseLog
+        {
+            get; set;
+        }
+
+
+
+
+
+        
 
         public Form1()
 		{
@@ -58,124 +186,14 @@ namespace TrunoGT
 			LowLevelPresenter lowLevelPresenter = new LowLevelPresenter(this);
 
 		}
-		public string FilePathDLL
-		{
-			get { return filepathdll; }
-			set { filepathdll = value; }
-		}
-		public string newNameDLL
-		{
-			get { return newnamedll; }
-			set { newnamedll = value; }
-		}
-		public string newVersionDLL
-		{
-			get { return newversiondll; }
-			set { newversiondll = value; }
-		}
-		public string newLastChangeDLL
-		{
-			get { return newlastchangedll; }
-			set { newlastchangedll = value; }
-		}
-		public string FilePath
-		{	get { return filepath; }
-			set { filepath = value; }
-		}
-		public int BinIndex
-		{
-			get { return binindex; }
-			set { binindex = value; }
-		}
-		public int DLLIndex
-		{
-			get { return dllindex; }
-			set { dllindex = value; }
-		}
-		public string newFilePath
-		{
-			get { return newfilepath; }
-			set { newfilepath = value; }
-		}
-		public string newCreateDate
-		{
-			get { return newcreatedate; }
-			set { newcreatedate = value; }
-		}
-		public string newSize
-		{
-			get { return newsize; }
-			set { newsize = value; }
-		}
-		public string Code
-		{	get  {return code; }
-			set { code = value; }
-		}
-		public string CodeGT {
-			get { return codegt; }
-			set { codegt = value; }
-		}
-		public string Result {
-			get { return result; }
-			set { result = value; }
-		}
-		public string FirstNum {
-			get { return firstnum; }
-			set { firstnum = value; }
-		}
-		public string SecondNum {
-			get { return secondnum; }
-			set { secondnum = value; }
-		}
-		public int MulResult
-		{
-			get { return mulresult; }
-			set { mulresult = value; }
-		}
-		public string XorNum
-		{
-			get { return xornum; }
-			set { xornum = value; }
-		}
-		public int XorRes
-		{
-			get { return xorres; }
-			set { xorres = value; }
-		}
-		public string LowLog
-		{
-			get { return lowlog; }
-			set { lowlog = value; }
-		}
-        public string FileLog
-        {
-            get { return filelog; }
-            set { filelog = value; }
-        }
-        public string AnalyseLog
-        {
-            get; set;
-        }
+		
 
 
 
-		public event EventHandler Add;
-		public event EventHandler Delete;
-		public event EventHandler Save;
-		public event EventHandler ReadFromFile;
-		public event EventHandler Edit;
-		public event EventHandler AddDLL;
-		public event EventHandler DeleteDLL;
-		public event EventHandler SaveDLL;
-		public event EventHandler ReadFromFileDLL;
-		public event EventHandler EditDLL;
-		public event EventHandler Analyze10;
-		public event EventHandler Analyze13;
-		public event EventHandler XOR;
-		public event EventHandler Mul;
-		public event EventHandler ReadFromBD;
+		
 
-		void IForm.OutTable(List<BinaryNode> binlist)
+
+        void IForm.OutTable(List<BinaryNode> binlist)
 		{
 
 			for (int i =0;i<binlist.Count;i++)
@@ -250,25 +268,18 @@ namespace TrunoGT
         }
 
 		private void button5_Click(object sender, EventArgs e)
-		{
-            try
+		{         
+           BinIndex = dataGridView1.CurrentRow.Index;
+            if (dataGridView1.Rows[BinIndex].Cells[1].Value != null)
             {
-                BinIndex = dataGridView1.CurrentRow.Index;
                 newFilePath = dataGridView1.Rows[BinIndex].Cells[1].Value.ToString();
                 newCreateDate = dataGridView1.Rows[BinIndex].Cells[2].Value.ToString();
                 newSize = dataGridView1.Rows[BinIndex].Cells[3].Value.ToString();
                 Edit.Invoke(sender, e);
-            }
-            catch (NullReferenceException)
-            {
-                FileLog += "ERROR: Выберите файл для редактирования!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
-            catch (Exception)
-            {
-                FileLog += "ERROR: При сохранении произошла неизвестная ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
+                
+            }           
+            else MessageBox.Show($"Ошибка при сохранении файла.\n\nError message:Измененный файл не выбран\n\n" +
+                    $"Details:При сохранении изменений необходимо выбрать файл\n\n"); 
             fileBoxLog.Text = FileLog;
         }
 
@@ -313,24 +324,16 @@ namespace TrunoGT
 
 		private void button10_Click(object sender, EventArgs e)
 		{
-            try
+               DLLIndex = dataGridView2.CurrentRow.Index;
+            if (dataGridView2.Rows[DLLIndex].Cells[1].Value != null)
             {
-                DLLIndex = dataGridView2.CurrentRow.Index;
                 newNameDLL = dataGridView2.Rows[DLLIndex].Cells[1].Value.ToString();
                 newVersionDLL = dataGridView2.Rows[DLLIndex].Cells[2].Value.ToString();
                 newLastChangeDLL = dataGridView2.Rows[DLLIndex].Cells[3].Value.ToString();
                 EditDLL.Invoke(sender, e);
             }
-            catch (NullReferenceException)
-            {
-                FileLog += "ERROR: Выберите файл для редактирования!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
-            catch (Exception)
-            {
-                FileLog += "ERROR: При сохранении произошла неизвестная ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-                fileBoxLog.Text = FileLog;
-            }
+            else MessageBox.Show($"Ошибка при сохранении изменений.\n\nError message:Измененный файл не выбран\n\n" +
+                    $"Details:При сохранении изменений необходимо выбрать файл\n\n");
             fileBoxLog.Text = FileLog;
         }
 
@@ -350,13 +353,13 @@ namespace TrunoGT
 		private void clr_Click(object sender, EventArgs e)
 		{
 			boxFirstNum.ReadOnly = false;
-			boxSecondNum.ReadOnly = false;
-            boxMulRes.ReadOnly = false;
+			boxSecondNum.ReadOnly = false;           
             boxFirstNum.Clear();
 			boxSecondNum.Clear();
             boxMulRes.Clear();
             mul.Enabled = true;
-            LowLog += "Значения очищены для умножения" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+
+            ClrMul.Invoke(sender, e);           
             lowLevelLog.Text = LowLog;
         }
 
@@ -378,7 +381,7 @@ namespace TrunoGT
 			xor.Enabled = true;
 			boxXOR.Clear();
 			resBOX.Clear();
-            LowLog += "Значения очищены для НЕ" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            ClrXOR.Invoke(sender, e);
             lowLevelLog.Text = LowLog;
         }
 

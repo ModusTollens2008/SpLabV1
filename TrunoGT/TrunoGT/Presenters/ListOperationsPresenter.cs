@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrunoGT.IViews;
+using TrunoGT.Models;
 
 namespace TrunoGT.Presenters
 {
@@ -16,6 +17,7 @@ namespace TrunoGT.Presenters
 		private IWorkFile WWFiles;
 		private IWorkWithXml WWXml;
 		private IListXMLOperations dllop;
+        private ModelListOperations IModel;
 		public ListOperationsPresenter(IForm Iform)
 		{
 			_IForm = Iform;
@@ -25,7 +27,6 @@ namespace TrunoGT.Presenters
 			_IForm.Save += SaveToBD;
 			_IForm.ReadFromFile += ReadFromFile;
 			_IForm.Edit += EditNode;
-
 			_IForm.AddDLL += AddDLLNode;
 			_IForm.DeleteDLL += DeleteDLLNode;
 			_IForm.SaveDLL += SaveToFileDLL;
@@ -36,146 +37,66 @@ namespace TrunoGT.Presenters
 			dllop = new ListOperations();
 			WWFiles = new WorkWithFiles();
 			WWXml = new WorkWithXML();
-            _IForm.FileLog += "Форма запущена!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            IModel = new ModelListOperations();
         }
 		private void SavingList(object sender,EventArgs e)
-		{
+		{                             
+			_IForm.OutTable(BinListOp.GetList= IModel.SavingList(_IForm.FilePath));
+            _IForm.FileLog = IModel.OPLog;
 
-            try { BinListOp.addNewElement(_IForm.FilePath);
-                _IForm.FileLog += "Файл успешно выбран!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "Упс, при выборе бинарника произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-			_IForm.OutTable(BinListOp.GetList);
-
-            
         }
 		private void DeleteNode(object sender, EventArgs e)
 		{
-			BinListOp.deleteElement(_IForm.BinIndex);           
+            BinListOp.GetList=IModel.DeleteNode(_IForm.BinIndex);
+			_IForm.FileLog=IModel.OPLog;
+            
+
+
         }
 		private void SaveToFile(object sender, EventArgs e)
 		{
-            try
-            { WWFiles.WriteBinFile("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
-                _IForm.FileLog += "Запись сохранена в файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-				WWFiles.WriteToBD(BinListOp.GetList);
-            }
-            catch (System.IO.IOException)
-            {
-                _IForm.FileLog += "ERROR: Произошла ошибка при открытии бинарного файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-           // catch (Exception)
-            {
-             //   _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
+            IModel.SaveToFile();
+            _IForm.FileLog = IModel.OPLog;
             
         }
-		private void SaveToBD(object sender, EventArgs e)
-		{
-			try
-			{
-				WWFiles.WriteToBD(BinListOp.GetList);
-				_IForm.FileLog += "Запись сохранена в BD!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-	
-			}
-			catch (Exception)
-			{
-				_IForm.FileLog += "ERROR: Произошла ошибка при открытии бинарного файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-			// catch (Exception)
-			{
-				//   _IForm.FileLog += "ERROR: Упс! Что-то пошло не так при сохранении в бинарный файл" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-
-		}
-		private void ReadFromBD(object sender, EventArgs e)
-		{
-			_IForm.FileLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			try
-			{
-				BinListOp.GetList = WWFiles.ReadFromBD().ToList();
-			}
-			catch (System.IO.IOException)
-			{
-				_IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-			catch (Exception)
-			{
-				_IForm.FileLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-			}
-
-			_IForm.OutTable(BinListOp.GetList);
-		}
 		private void ReadFromFile(object sender, EventArgs e)
-		{
-            _IForm.FileLog += "Открываем файл для чтения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            try
-            {
-                BinListOp.GetList = WWFiles.ReadFromBin("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
-            }
-            catch (System.IO.IOException)
-            {
-                _IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-
-            _IForm.OutTable(BinListOp.GetList);
-         }
+		{          
+            _IForm.OutTable(BinListOp.GetList= IModel.ReadFromFile());
+            _IForm.FileLog = IModel.OPLog;
+        }
 		private void EditNode(object sender, EventArgs e)
-		{
-			BinListOp.editElement(_IForm.BinIndex,_IForm.newFilePath,_IForm.newSize,_IForm.newCreateDate);
-			_IForm.OutTable(BinListOp.GetList);
+		{			
+			_IForm.OutTable(BinListOp.GetList= IModel.EditNode(_IForm.BinIndex, _IForm.newFilePath, _IForm.newSize, _IForm.newCreateDate));
+            _IForm.FileLog = IModel.OPLog;
 		}
+
+
 
 		private void AddDLLNode(object sender, EventArgs e)
 		{
-            try { dllop.addNewElement(_IForm.FilePathDLL);
-                _IForm.FileLog += "Файл успешно выбран!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "Упс, при выборе dll произошла ошибка!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            _IForm.OutTableDLL(dllop.GetList);
-		}
+            _IForm.OutTableDLL(dllop.GetList=IModel.AddDLLNode(_IForm.FilePathDLL));
+            _IForm.FileLog = IModel.OPLog;
+        }
 
 		private void DeleteDLLNode(object sender, EventArgs e)
 		{
-			dllop.deleteElement(_IForm.DLLIndex);
-		}
+            dllop.GetList = IModel.DeleteDLLNode(_IForm.DLLIndex);
+            _IForm.FileLog = IModel.OPLog;
+        }
 		private void SaveToFileDLL(object sender, EventArgs e)
 		{
-            _IForm.FileLog += "Сохраняю DLL" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            WWXml.writeList("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml", dllop.GetList);
-            _IForm.FileLog += "Успешно сохранено!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            dllop.GetList=IModel.SaveToFileDLL();
+            _IForm.FileLog = IModel.OPLog;           
         }
 		private void ReadFromFileDLL(object sender, EventArgs e)
-		{
-            _IForm.FileLog += "Начинаем чтение из файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            try { dllop.GetList = WWXml.readFile("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/TRUNOGTFILExml.xml").ToList(); }
-            catch (System.IO.IOException)
-            {
-                _IForm.FileLog += "ERROR: Ошибка при открытии файла!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            catch (Exception)
-            {
-                _IForm.FileLog += "ERROR: Упс! При открытии файла что-то пошло не так!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            _IForm.OutTableDLL(dllop.GetList);
-            _IForm.FileLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+		{           
+            _IForm.OutTableDLL(dllop.GetList=IModel.ReadFromFileDLL());
+            _IForm.FileLog = IModel.OPLog;
         }
 		private void EditDllNode(object sender, EventArgs e)
-		{
-            _IForm.FileLog += "Изменяем файл!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            dllop.editElement(_IForm.DLLIndex,_IForm.newNameDLL, _IForm.newVersionDLL, _IForm.newLastChangeDLL);
-			_IForm.OutTableDLL(dllop.GetList);
-            _IForm.FileLog += "Изменения произошли успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+		{            
+			_IForm.OutTableDLL(dllop.GetList= IModel.EditDllNode(_IForm.DLLIndex, _IForm.newNameDLL, _IForm.newVersionDLL, _IForm.newLastChangeDLL));
+            _IForm.FileLog = IModel.OPLog;
         }
 
 	}

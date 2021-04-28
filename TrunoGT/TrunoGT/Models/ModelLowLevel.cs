@@ -7,11 +7,40 @@ using System.Threading.Tasks;
 
 namespace TrunoGT.Models
 {
+    /// <summary>
+    /// Модель низкоуровневых функций 
+    /// </summary>
     class ModelLowLevel
     {
-        private LowLevelFunctions _ILow = new LowLevelFunctions();       
+        /// <summary>
+        /// Экземпляр класса низкоуровневых функций
+        /// </summary>
+        private LowLevelFunctions _ILow = new LowLevelFunctions();
+        /// <summary>
+        /// Лог действий
+        /// </summary>
         public string LowLog
         {get;set;}
+
+        /// <summary>
+        /// Очистка полей для умножения
+        /// </summary>
+        public void MulClr()
+        {
+            LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Значения для умножения очищены!" + "\n";
+        }
+        /// <summary>
+        /// Очистка полей для НЕ
+        /// </summary>
+        public void XORClr()
+        {
+            LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Значения для побитового НЕ очищены!" + "\n";
+        }
+        /// <summary>
+        /// Модель побитового НЕ
+        /// </summary>
+        /// <param name="a">Первое число</param>
+        /// <returns>Результат</returns>
         public int XOR(string a)
         {
            int value = 0;
@@ -23,33 +52,39 @@ namespace TrunoGT.Models
 
             catch (ArgumentNullException)
             {
-                LowLog += "Ошибка! " + "Первое число не было введено" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка! " + "Число не было введено" + "\n";
             }
             catch (FormatException)
             {
-                LowLog += "Ошибка! Первое число имело неверный формат" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка! Число имело неверный формат" + "\n";
             }
             catch (OverflowException)
             {
-                LowLog += "Слишком большое первое число!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Слишком большое первое число!" + "\n";
             }
             catch (Exception)
             {
-                LowLog += "Неизвестная ошибка в обработке первого числа!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Неизвестная ошибка в обработке первого числа!" +  "\n";
             }
             if (value != 0)
             {
-                LowLog += "Успейшн!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog +=DateTime.Now.ToString("dd.MM.yyyy ") +  DateTime.Now.ToString("HH:mm:ss ") + "Успешное вычисление побитового НЕ! " +"Результат вычисления: "+value+ "\n";
             }
             return value;
            
         }
+        /// <summary>
+        /// Модель умножения двух чисел
+        /// </summary>
+        /// <param name="a"> Первое число</param>
+        /// <param name="b">Второе число</param>
+        /// <returns>Результат умножения</returns>
         public int Mul(string a, string b)
         {
-            LowLog += "Инициализация умножения!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+            LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Инициализация умножения!" + "\n";
             int firstvalue = 0;
             int secondvalue = 0;
-            int mulres;
+            int mulres=0;
             try
             {
                 firstvalue = int.Parse(a);
@@ -57,53 +92,48 @@ namespace TrunoGT.Models
 
             catch (ArgumentNullException)
             {
-                LowLog += "Ошибка! " + "Первое число не было введено" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка! " + "Первое число не было введено" + "\n";
+                return mulres;
             }
             catch (FormatException)
             {
-                LowLog += "Ошибка! Первое число имело неверный формат" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка! Первое число имело неверный формат" + "\n";
+                return mulres;
             }
             catch (OverflowException)
             {
-                LowLog += "Слишком большое первое число!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ")  + DateTime.Now.ToString("HH:mm:ss ") + "Слишком большое первое число!" + "\n";
+                return mulres;
             }
             catch (Exception)
             {
-                LowLog += "Неизвестная ошибка в обработке первого числа!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ")  + DateTime.Now.ToString("HH:mm:ss ") + "Неизвестная ошибка в обработке первого числа!" + "\n";
+                return mulres;
             }
 
             try
             {
                 secondvalue= int.Parse(b);
+                mulres = _ILow.LowLevelMultiple(firstvalue, secondvalue);
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Операция произошла успешно!" + "\n";
             }
             catch (ArgumentNullException)
             {
-                LowLog += "Ошибка! " + "Второе число не было введено" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ")+ DateTime.Now.ToString("HH:mm:ss ") + "Ошибка! " + "Второе число не было введено" + "\n";
             }
             catch (FormatException)
             {
-                LowLog += "Ошибка! Второе число имело неверный формат" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка! Второе число имело неверный формат" + "\n";
             }
             catch (OverflowException)
             {
-                LowLog += "Слишком большое второе число!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
+                LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Слишком большое второе число!" + "\n";
             }
             catch (Exception)
             {
-                LowLog += "Неизвестная ошибка в обработке второго числа!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            if ((secondvalue == 0) && (firstvalue == secondvalue))
-            {
-                mulres = 0;
-                LowLog += "Упс! Что-то пошло не так :С" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
-            else
-            {
-                mulres = _ILow.LowLevelMultiple(firstvalue, secondvalue);
-                LowLog += "Операция произошла успешно!" + " Дата " + DateTime.Now.ToString("dd.MM.yyyy ") + "Текущее время " + DateTime.Now.ToString("HH:mm:ss ") + "\n";
-            }
+                LowLog +=  DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Неизвестная ошибка в обработке второго числа!"+ "\n";
+            }       
             return mulres;
-            //return _ILow.LowLevelMultiple(a,b);
         }
 
     }
