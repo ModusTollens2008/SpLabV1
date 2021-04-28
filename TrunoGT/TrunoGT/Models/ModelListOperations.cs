@@ -55,9 +55,8 @@ namespace TrunoGT.Models
 		{
 			try
 			{
-				WWFiles.WriteBinFile("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
+				WWFiles.WriteBinFile("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin", BinListOp.GetList);
                 OPLog += DateTime.Now.ToString("dd.MM.yyyy ")+ DateTime.Now.ToString("HH:mm:ss ") +"Запись сохранена в файл!"+ "\n";
-				//WWFiles.WriteToBD(BinListOp.GetList);
 			}
 			catch (System.IO.IOException)
 			{
@@ -74,7 +73,7 @@ namespace TrunoGT.Models
             OPLog += DateTime.Now.ToString("dd.MM.yyyy ")  + DateTime.Now.ToString("HH:mm:ss ") + "Открываем файл для чтения!" + "\n";
 			try
 			{
-				BinListOp.GetList = WWFiles.ReadFromBin("Z:/универ/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
+				BinListOp.GetList = WWFiles.ReadFromBin("D:/SPLabV1/SpLabV1/TrunoGT/TrunoGT/TRUNOGTFILES/binfile.bin").ToList();
 			}
 			catch (System.IO.IOException)
 			{
@@ -201,15 +200,21 @@ namespace TrunoGT.Models
 		public List<BinaryNode> WriteToBD()
 		{
 			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Сохраняю в БД" + "\n";
-			//try
+			try
 			{
 				WWFiles.WriteToBD(BinListOp.GetList);
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!" + "\n";
 			}
-			//catch (InvalidOperationException e)
+			catch (InvalidOperationException e)
+			{
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Что-то пошло не так, возможно есть повторяющиеся записи" + "\n";
+
+			}
+			catch (System.Data.Entity.Infrastructure.DbUpdateException)
 			{
 				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Что-то пошло не так, возможно есть повторяющиеся записи" + "\n";
 			}
-			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!" + "\n";
+			
 			return BinListOp.GetList;
 		}
 
@@ -219,12 +224,13 @@ namespace TrunoGT.Models
 			try
 			{
 				BinListOp.GetList = WWFiles.ReadFromBD();
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно загружено!" + "\n";
 			}
 			catch (InvalidOperationException e)
 			{
 				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка при загрузке из БД" + "\n";
 			}
-			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно загружено!" + "\n";
+			
 			return BinListOp.GetList;
 		}
 
@@ -234,12 +240,17 @@ namespace TrunoGT.Models
 			try
 			{
 				WWXml.WriteToBD(dllop.GetList);
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!" + "\n";
 			}
 			catch (InvalidOperationException e)
 			{
 				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Что-то пошло не так, возможно есть повторяющиеся записи" + "\n";
 			}
-			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно сохранено!" + "\n";
+			catch (System.Data.Entity.Infrastructure.DbUpdateException)
+			{
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Что-то пошло не так, возможно есть повторяющиеся записи" + "\n";
+			}
+			
 			return dllop.GetList;
 		}
 
@@ -249,12 +260,13 @@ namespace TrunoGT.Models
 			try
 			{
 				dllop.GetList = WWXml.ReadFromBD();
+				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно загружено!" + "\n";
 			}
 			catch (InvalidOperationException e)
 			{
 				OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Ошибка при загрузке из БД" + "\n";
 			}
-			OPLog += DateTime.Now.ToString("dd.MM.yyyy ") + DateTime.Now.ToString("HH:mm:ss ") + "Успешно загружено!" + "\n";
+			
 			return dllop.GetList;
 		}
 
