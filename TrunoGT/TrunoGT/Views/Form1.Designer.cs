@@ -569,6 +569,7 @@
 			this.result13Box.ReadOnly = true;
 			this.result13Box.Size = new System.Drawing.Size(93, 20);
 			this.result13Box.TabIndex = 1;
+			this.result13Box.TextChanged += new System.EventHandler(this.result13Box_TextChanged);
 			// 
 			// result10Box
 			// 

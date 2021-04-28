@@ -313,7 +313,7 @@ namespace TrunoGT
 
 		private void button9_Click(object sender, EventArgs e)
 		{
-			ClearRows();
+			ClearRows2();
 			ReadFromFileDLL.Invoke(sender, e);
             fileBoxLog.Text = FileLog;
         }
@@ -419,7 +419,7 @@ namespace TrunoGT
 
 		private void button13_Click(object sender, EventArgs e)
 		{
-			ClearRows();
+			ClearRows2();
 			ReadFromBDDLL.Invoke(sender, e);
 			fileBoxLog.Text = FileLog;
 		}
@@ -433,6 +433,21 @@ namespace TrunoGT
 					dataGridView1.Rows[j].Cells[i].Value = "";
 				}
 			}
+		}
+		private void ClearRows2()
+		{
+			for (int i = 0; i < dataGridView2.Columns.Count; i++)
+			{
+				for (int j = 0; j < dataGridView2.Rows.Count; j++)
+				{
+					dataGridView2.Rows[j].Cells[i].Value = "";
+				}
+			}
+		}
+
+		private void result13Box_TextChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

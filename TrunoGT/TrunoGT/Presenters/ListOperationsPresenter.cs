@@ -42,8 +42,9 @@ namespace TrunoGT.Presenters
             IModel = new ModelListOperations();
         }
 		private void SavingList(object sender,EventArgs e)
-		{                             
-			_IForm.OutTable(BinListOp.GetList= IModel.SavingList(_IForm.FilePath));
+		{
+			
+			_IForm.OutTable(BinListOp.GetList = IModel.SavingList(_IForm.FilePath));
             _IForm.FileLog = IModel.OPLog;
 
         }

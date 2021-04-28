@@ -50,17 +50,16 @@ namespace TrunoGT.Presenters
         /// <param name="e"></param>
 		public void Analyze13(object sender, EventArgs e)
 		{
-
-            _IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();       
+			if (_Istr.CheckWhileDoStucture(_IForm.CodeGT) > 0)
+			{
+				_IForm.Result = "Да!";
+			}
+			else
+			{
+				_IForm.Result = "Нет!";
+			}
+                
             _IForm.AnalyseLog = _Istr.AnalyseLog;
-            //_IForm.Result = _Istr.CheckWhileDoStucture(_IForm.CodeGT).ToString();
-
-			/* int[] a = new int[] { 1, 2, 3 };
-			 foreach (int b in a)
-			 {
-				 Console.WriteLine(b);
-			 }
-			 */
 		}
 	}
 }
